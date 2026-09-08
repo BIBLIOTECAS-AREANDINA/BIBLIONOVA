@@ -7,17 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Librería para generación de QR en vivo -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  
+
   <style>
     :root {
       --bg: #f4f9fc;
       --surface: #ffffff;
       --surface2: #eaf4fa;
-      --sky: #1e9fd6;
-      --teal: #0fa988;
-      --oa: #f68212;          /* Naranja Acceso Abierto */
-      --purple: #7c5cfc;      /* Acento Inteligencia Artificial */
-      --leaf: #3f9e5c;        /* Acento Conectividad y Automatización */
+      --sky: #1e9fd6;        /* Pilar 1 · Experiencia al Usuario */
+      --oa: #f68212;         /* Pilar 2 · Gestión Institucional */
+      --teal: #0fa988;       /* Pilar 3 · Academia */
+      --purple: #7c5cfc;     /* Acento Intellectus / IA */
+      --leaf: #3f9e5c;       /* Acento NexusScript / Automatización */
       --ink: #14324a;
       --muted: #5b7288;
       --border: rgba(30,159,214,0.18);
@@ -47,7 +47,7 @@
 
     .progress-bar {
       position: fixed; top: 0; left: 0; height: 4px; z-index: 200; width: 0%;
-      background: linear-gradient(90deg, var(--sky), var(--teal), var(--oa));
+      background: linear-gradient(90deg, var(--sky), var(--oa), var(--teal));
       transition: width 0.1s ease-out;
     }
 
@@ -84,8 +84,8 @@
       margin: 1rem 0 2rem;
     }
 
-    /* ── PILARES GENERALES ── */
-    .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    /* ── ARQUITECTURA: LOS 3 PILARES ── */
+    .pilares { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
     .pilar {
       background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
       padding: 1.5rem; transition: transform .25s, box-shadow .25s;
@@ -95,10 +95,15 @@
     .pilar-icon { font-size: 1.7rem; margin-bottom: 0.7rem; }
     .pilar h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--ink); }
     .pilar p { font-size: 0.85rem; color: var(--muted); }
+    .pilar-count {
+      display: inline-block; margin-top: 0.9rem; font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+      background: rgba(91,114,136,0.08); border-radius: 100px; padding: 0.2rem 0.7rem;
+    }
 
     /* ── BIBLIONOVA ── */
     #bibionova { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .bn-summary { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1rem 0 2rem; }
+    .bn-summary { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 1rem 0 1.3rem; }
     .bn-summary-item {
       background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
       padding: 0.7rem 1.1rem; font-size: 0.82rem; font-weight: 700; color: var(--ink);
@@ -106,8 +111,15 @@
     }
     .bn-summary-item b { font-family: 'Fraunces', serif; font-size: 1.15rem; }
     .bn-summary-item.c1 b { color: var(--sky); }
-    .bn-summary-item.c2 b { color: var(--purple); }
+    .bn-summary-item.c2 b { color: var(--oa); }
     .bn-summary-item.c3 b { color: var(--teal); }
+
+    .estado-legend { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+    .estado-legend .lg { display: flex; align-items: center; gap: 0.42rem; font-size: 0.75rem; font-weight: 700; color: var(--muted); }
+    .estado-legend .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .dot.activo { background: var(--teal); }
+    .dot.desarrollo { background: var(--oa); }
+    .dot.pendiente { background: var(--muted); }
 
     .pilares.bn-pilares .pilar { position: relative; padding-top: 1.9rem; }
     .bn-pilar-tag {
@@ -117,59 +129,67 @@
       padding: 0.15rem 0.55rem;
     }
     .pilares.bn-pilares .pilar:nth-child(1) .bn-pilar-tag { background: var(--sky); }
-    .pilares.bn-pilares .pilar:nth-child(2) .bn-pilar-tag { background: var(--purple); }
+    .pilares.bn-pilares .pilar:nth-child(2) .bn-pilar-tag { background: var(--oa); }
     .pilares.bn-pilares .pilar:nth-child(3) .bn-pilar-tag { background: var(--teal); }
-    .pilares.bn-pilares .pilar:nth-child(4) .bn-pilar-tag { background: var(--oa); }
-    .pilares.bn-pilares .pilar:nth-child(5) .bn-pilar-tag { background: var(--leaf); }
 
-    .bn-pilar-block { margin-top: 4rem; }
-    .bn-pilar-head { display: flex; align-items: flex-start; gap: 1.1rem; margin-bottom: 1.6rem; }
+    .bn-pilar-block { margin-top: 4.2rem; }
+    .bn-pilar-head { display: flex; align-items: flex-start; gap: 1.1rem; margin-bottom: 1.2rem; }
     .bn-pilar-num {
       font-family: 'Fraunces', serif; font-weight: 900; font-size: 2rem;
       color: var(--sky); flex-shrink: 0; line-height: 1; opacity: 0.85;
     }
-    .bn-pilar-block.c2 .bn-pilar-num { color: var(--purple); }
-    .bn-pilar-block.c3 .bn-pilar-num { color: var(--teal); }
-    .bn-pilar-block.c4 .bn-pilar-num { color: var(--oa); }
-    .bn-pilar-block.c5 .bn-pilar-num { color: var(--leaf); }
+    .bn-pilar-block.p2 .bn-pilar-num { color: var(--oa); }
+    .bn-pilar-block.p3 .bn-pilar-num { color: var(--teal); }
     .bn-pilar-head h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 0.3rem; }
-    .bn-pilar-head p { font-size: 0.88rem; color: var(--muted); max-width: 640px; }
+    .bn-pilar-head p { font-size: 0.88rem; color: var(--muted); max-width: 660px; }
 
-    /* ── AJUSTE DE TARJETAS E IMÁGENES COMPLETAS SIN RECORTAR ── */
+    /* Subgrupos dentro de cada pilar */
+    .bn-grupo { margin-top: 2.4rem; }
+    .bn-grupo-title {
+      font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 800;
+      color: var(--sky); margin-bottom: 0.3rem;
+      display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+    }
+    .bn-pilar-block.p2 .bn-grupo-title { color: var(--oa); }
+    .bn-pilar-block.p3 .bn-grupo-title { color: var(--teal); }
+    .bn-grupo-title .g-count {
+      font-family: 'Inter', sans-serif; font-size: 0.66rem; font-weight: 800;
+      color: var(--muted); background: rgba(91,114,136,0.08);
+      border-radius: 100px; padding: 0.12rem 0.6rem; letter-spacing: 0.05em;
+    }
+    .bn-grupo-desc { font-size: 0.85rem; color: var(--muted); max-width: 740px; margin-bottom: 1.15rem; }
+
+    /* ── TARJETAS ── */
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-    
+
     .tool-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
       overflow: hidden; display: flex; flex-direction: column;
       position: relative; transition: transform .25s, box-shadow .25s, border-color .25s;
     }
     .tool-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: rgba(30,159,214,0.45); }
-    
+
     .tool-banner-wrap {
-      width: 100%; 
-      height: 200px; 
-      background: #f8fafc;
+      width: 100%; height: 200px; background: #f8fafc;
       overflow: hidden; position: relative; border-bottom: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
     }
-    .tool-banner-img {
-      width: 100%; height: 100%; 
-      object-fit: contain;
-      transition: transform .3s ease;
-    }
+    .tool-banner-img { width: 100%; height: 100%; object-fit: contain; transition: transform .3s ease; }
     .tool-card:hover .tool-banner-img { transform: scale(1.03); }
 
-    .tool-card-body {
-      padding: 1.25rem; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1;
+    /* Banner provisional mientras no hay imagen definitiva */
+    .tool-banner-ph {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, rgba(30,159,214,0.08), rgba(15,169,136,0.08));
     }
 
-    .tool-content-layout {
-      display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between; height: 100%;
-    }
+    .tool-card-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.8rem; flex-grow: 1; }
+    .tool-content-layout { display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between; height: 100%; }
     .tool-info { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
 
     .tool-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 800; color: var(--ink); line-height: 1.2; }
-    
+
     .tool-scope {
       display: inline-block; align-self: flex-start;
       background: var(--surface2); border: 1px solid var(--border); border-radius: 100px;
@@ -177,7 +197,34 @@
       letter-spacing: 0.04em; text-transform: uppercase;
     }
     .tool-desc { font-size: 0.85rem; color: var(--muted); flex-grow: 1; }
-    
+
+    .estado-chip {
+      position: absolute; top: 0.85rem; right: 0.85rem; z-index: 3;
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.22rem 0.62rem; border-radius: 100px;
+    }
+    .estado-chip.desarrollo { background: rgba(246,130,18,0.16); color: #b85f06; border: 1px solid rgba(246,130,18,0.38); }
+    .estado-chip.pendiente { background: rgba(91,114,136,0.14); color: var(--muted); border: 1px solid rgba(91,114,136,0.32); }
+
+    .btn-main {
+      text-align: center; background: var(--sky); color: #fff;
+      padding: 0.6rem 0.8rem; border-radius: 10px; font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; transition: background .2s; margin-top: auto; display: block;
+      border: none; font-family: 'Inter', sans-serif; cursor: pointer;
+    }
+    .btn-main:hover { background: #1583b2; }
+    .btn-main.disabled { background: var(--muted); cursor: default; opacity: 0.7; }
+    .btn-main.disabled:hover { background: var(--muted); }
+
+    .btn-ficha {
+      background: none; border: none; cursor: pointer; padding: 0;
+      font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
+      color: var(--muted); text-align: left; margin-top: 0.6rem;
+      display: inline-flex; align-items: center; gap: 0.3rem; transition: color .2s;
+      align-self: flex-start;
+    }
+    .btn-ficha:hover { color: var(--sky); }
+
     /* CAJA DEL QR */
     .qr-static-box {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -189,31 +236,35 @@
     .qr-static-box .qr-holder img { width: 100% !important; height: 100% !important; border-radius: 4px; }
     .qr-label { font-size: 0.62rem; font-weight: 700; color: var(--muted); margin-top: 0.3rem; text-transform: uppercase; }
 
-    .btn-main {
-      text-align: center; background: var(--sky); color: #fff;
-      padding: 0.6rem 0.8rem; border-radius: 10px; font-size: 0.82rem; font-weight: 700;
-      text-decoration: none; transition: background .2s; margin-top: auto; display: block;
-    }
-    .btn-main:hover { background: #1583b2; }
-
-    /* ESTILOS DE IA */
+    /* ACENTOS POR TIPO DE TARJETA */
     .tool-card.ia-card { border: 1.5px solid rgba(124,92,252,0.35); }
-    .tool-card.ia-card .tool-scope { color: #7c5cfc; border-color: rgba(124,92,252,0.3); background: rgba(124,92,252,0.07); }
+    .tool-card.ia-card .tool-scope { color: var(--purple); border-color: rgba(124,92,252,0.3); background: rgba(124,92,252,0.07); }
     .tool-card.ia-card .btn-main { background: var(--purple); }
     .tool-card.ia-card .btn-main:hover { background: #613df0; }
 
-    /* ESTILOS DE GESTIÓN (PILAR 4) */
     .tool-card.oa-card { border: 1.5px solid rgba(246,130,18,0.35); }
     .tool-card.oa-card .tool-scope { color: var(--oa); border-color: rgba(246,130,18,0.3); background: rgba(246,130,18,0.07); }
     .tool-card.oa-card .btn-main { background: var(--oa); }
     .tool-card.oa-card .btn-main:hover { background: #d96f0b; }
 
-    /* ESTILOS DE AUTOMATIZACIÓN (PILAR 5) */
     .tool-card.leaf-card { border: 1.5px solid rgba(63,158,92,0.3); }
     .tool-card.leaf-card .tool-scope { color: var(--leaf); border-color: rgba(63,158,92,0.3); background: rgba(63,158,92,0.07); }
     .tool-card.leaf-card .btn-main { background: var(--leaf); }
+    .tool-card.leaf-card .btn-main:hover { background: #348450; }
 
-    /* DIAGRAMAS DE FLUJO DEL PILAR 5 */
+    .tool-card.teal-card { border: 1.5px solid rgba(15,169,136,0.32); }
+    .tool-card.teal-card .tool-scope { color: var(--teal); border-color: rgba(15,169,136,0.3); background: rgba(15,169,136,0.07); }
+    .tool-card.teal-card .btn-main { background: var(--teal); }
+    .tool-card.teal-card .btn-main:hover { background: #0c8a6f; }
+
+    .tool-card.is-desarrollo { border-style: dashed; }
+    .tool-card.is-pendiente {
+      border: 1.5px dashed rgba(91,114,136,0.45);
+      background: repeating-linear-gradient(45deg, #fff, #fff 10px, rgba(244,249,252,0.6) 10px, rgba(244,249,252,0.6) 20px);
+    }
+    .tool-card.is-pendiente .tool-scope { color: var(--muted); border-color: rgba(91,114,136,0.3); background: rgba(91,114,136,0.08); }
+
+    /* DIAGRAMAS DE FLUJO */
     .flow-card {
       background: var(--bg); border: 1px solid var(--border); border-radius: 16px;
       padding: 1.4rem; margin-top: 1.4rem; transition: transform .25s, box-shadow .25s;
@@ -229,30 +280,66 @@
     }
     .flow-box small { display: block; font-weight: 500; color: var(--muted); font-size: 0.68rem; margin-top: 0.1rem; }
     .flow-arrow { color: var(--leaf); font-size: 1.1rem; font-weight: 700; flex-shrink: 0; }
-    
-    /* PROYECTOS EN DESARROLLO */
-    .dev-card { border: 1.5px dashed var(--muted) !important; background: repeating-linear-gradient(45deg, rgba(255,255,255,1), rgba(255,255,255,1) 10px, rgba(244,249,252,0.5) 10px, rgba(244,249,252,0.5) 20px); }
-    .dev-card .btn-main { background: var(--muted); cursor: not-allowed; }
 
-    /* ── EQUIPO CENTRADO Y FOTOS ── */
+    /* ── FICHA DE INICIATIVA (MODAL) ── */
+    .ficha-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(20,50,74,0.45); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity .22s ease;
+    }
+    .ficha-overlay.open { opacity: 1; pointer-events: auto; }
+    .ficha {
+      background: var(--surface); border-radius: 20px; width: 100%; max-width: 800px;
+      max-height: 88vh; overflow-y: auto; box-shadow: 0 24px 70px rgba(20,50,74,0.28);
+      transform: translateY(14px) scale(0.985); transition: transform .22s ease;
+      position: relative;
+    }
+    .ficha-overlay.open .ficha { transform: none; }
+    .ficha-head {
+      position: sticky; top: 0; z-index: 2;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 1.4rem 1.7rem 1.1rem; border-radius: 20px 20px 0 0;
+    }
+    .ficha-eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); margin-bottom: 0.35rem; }
+    .ficha-head h3 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 900; line-height: 1.15; padding-right: 2.6rem; }
+    .ficha-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .ficha-close {
+      position: absolute; top: 1.15rem; right: 1.25rem; z-index: 3;
+      width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--bg); color: var(--muted); font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all .2s;
+    }
+    .ficha-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .ficha-body { padding: 1.4rem 1.7rem 1.8rem; }
+    .ficha-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1rem; }
+    .ficha-field { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 0.9rem 1.05rem; }
+    .ficha-field.full { grid-column: 1 / -1; }
+    .ficha-field dt {
+      font-size: 0.67rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.3rem;
+    }
+    .ficha-field dd { font-size: 0.87rem; color: var(--ink); }
+    .ficha-field dd.vacio { color: var(--muted); font-style: italic; opacity: 0.85; }
+    .ficha-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; margin-top: 1.5rem; }
+    .ficha-actions .btn-main { margin-top: 0; display: inline-block; padding: 0.65rem 1.5rem; }
+
+    /* ── EQUIPO ── */
     #equipo { background: var(--bg); border-top: 1px solid var(--border); text-align: center; }
     #equipo .section-body { margin: 0 auto; }
     #equipo .divider { margin: 1rem auto 2rem; }
 
-    .equipo-grid { 
-      display: flex; flex-wrap: wrap; justify-content: center; 
-      gap: 1.5rem; margin-top: 2rem; 
-    }
-    
+    .equipo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+
     .member-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
       padding: 1.5rem 1.2rem; text-align: center; transition: transform .25s, box-shadow .25s;
       flex: 1 1 200px; max-width: 240px;
     }
     .member-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    
+
     .member-img-wrap {
-      width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem; 
+      width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 1rem;
       border: 3px solid var(--teal); box-shadow: 0 4px 12px rgba(20,50,74,0.1);
       overflow: hidden; display: flex; align-items: center; justify-content: center;
       background: #eaf4fa;
@@ -264,7 +351,7 @@
     footer {
       background: var(--ink); color: rgba(255,255,255,0.85);
       padding: 2.2rem 2.5rem; text-align: center; font-size: 0.82rem;
-      position: relative; z-index: 1; margin-top: 3rem;
+      position: relative; z-index: 1;
     }
     footer strong { color: #fff; }
 
@@ -275,9 +362,11 @@
       .tool-content-layout { flex-direction: column; }
       .qr-static-box { width: 100%; margin-top: 0.5rem; }
       .qr-static-box .qr-holder { width: 120px; height: 120px; }
+      .ficha-head, .ficha-body { padding-left: 1.1rem; padding-right: 1.1rem; }
     }
   </style>
 </head>
+
 <body>
 
 <div class="progress-bar" id="progressBar"></div>
@@ -285,11 +374,9 @@
 <nav>
   <a href="#bibionova" class="nav-logo">Biblio<span>Nova</span></a>
   <div class="nav-links">
-    <a href="#pilar1">01. Acceso</a>
-    <a href="#pilar2">02. Intellectus</a>
-    <a href="#pilar3">03. Formación</a>
-    <a href="#pilar4">04. Gestión</a>
-    <a href="#pilar5">05. Conectividad</a>
+    <a href="#pilar1">01. Experiencia</a>
+    <a href="#pilar2">02. Gestión</a>
+    <a href="#pilar3">03. Academia</a>
     <a href="#equipo">Equipo</a>
   </div>
 </nav>
@@ -308,495 +395,24 @@
         inteligencia artificial, impulsa servicios bibliotecarios más eficientes, accesibles e innovadores.
       </p>
 
-      <div class="bn-summary">
-        <div class="bn-summary-item c1"><b>5</b> pilares estratégicos</div>
-        <div class="bn-summary-item c2"><b>12</b> proyectos de innovación</div>
-        <div class="bn-summary-item c3"><b>+2.204</b> usuarios inscritos en experiencias de aprendizaje</div>
+      <div class="bn-summary" id="bnSummary"></div>
+
+      <div class="estado-legend">
+        <span class="lg"><span class="dot activo"></span> En operación</span>
+        <span class="lg"><span class="dot desarrollo"></span> En desarrollo</span>
+        <span class="lg"><span class="dot pendiente"></span> Por documentar</span>
       </div>
 
-      <div class="section-label" style="margin-top:2.4rem;">Arquitectura del ecosistema</div>
-      <div class="pilares bn-pilares">
-        <a href="#pilar1" class="pilar">
-          <span class="bn-pilar-tag">01</span>
-          <div class="pilar-icon">🔎</div>
-          <h3>Acceso y Descubrimiento</h3>
-          <p>Elimina las barreras entre el usuario y la información científica, facilitando el acceso integrado e intuitivo.</p>
-        </a>
-        <a href="#pilar2" class="pilar">
-          <span class="bn-pilar-tag">02</span>
-          <div class="pilar-icon">🤖</div>
-          <h3>Inteligencia Artificial</h3>
-          <p>Agentes IA especializados para búsqueda académica, citación, investigación, bibliometría y apoyo jurídico 24/7.</p>
-        </a>
-        <a href="#pilar3" class="pilar">
-          <span class="bn-pilar-tag">03</span>
-          <div class="pilar-icon">🎓</div>
-          <h3>Formación Digital</h3>
-          <p>Experiencias de aprendizaje con +2.204 usuarios inscritos</p>
-        </a>
-        <a href="#pilar4" class="pilar">
-          <span class="bn-pilar-tag">04</span>
-          <div class="pilar-icon">📊</div>
-          <h3>Gestión e Inteligencia</h3>
-          <p>Tablero SROI, automatización de reservas y servicios para transformar datos en decisiones estratégicas.</p>
-        </a>
-        <a href="#pilar5" class="pilar">
-          <span class="bn-pilar-tag">05</span>
-          <div class="pilar-icon">🔗</div>
-          <h3>Conectividad</h3>
-          <p>Programación de tareas automáticas dentro de Google Workspace para optimizar procesos bibliotecarios.</p>
-        </a>
-      </div>
+      <div class="section-label" style="margin-top:2.6rem;">Arquitectura del ecosistema</div>
+      <div class="pilares bn-pilares" id="pilaresGrid"></div>
 
-      <!-- PILAR 1 -->
-      <div class="bn-pilar-block c1" id="pilar1">
-        <div class="bn-pilar-head">
-          <div class="bn-pilar-num">01</div>
-          <div>
-            <h3>Acceso y Descubrimiento</h3>
-            <p>Recursos digitales organizados por facultad, micrositios especializados, buscador inteligente y catálogo interactivo.</p>
-          </div>
-        </div>
-        <div class="tools-grid">
-          <!-- BiblioClick -->
-          <div class="tool-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1mSVOK6dnf3StAFSz3iWsO5Bsyg2mLh3x" alt="BiblioClick" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">BiblioClick</div>
-                  <span class="tool-scope">Portal de recursos</span>
-                  <p class="tool-desc">Portal modernizado con buscador inteligente por palabras clave y micrositios especializados por facultad con identidad visual propia.</p>
-                  <a href="https://bidig.areandina.edu.co/main-home/inicio-todas-las-facultades-micro-facultades/" target="_blank" class="btn-main">Abrir Portal</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://bidig.areandina.edu.co/main-home/inicio-todas-las-facultades-micro-facultades/"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Colecciones con Sentido -->
-          <div class="tool-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/13xixGTpApTpanEEd9aHCKv3w_kbS55zH" alt="Colecciones Con Sentido" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Colecciones Con Sentido</div>
-                  <span class="tool-scope">Catálogo interactivo · BIDIG</span>
-                  <p class="tool-desc">Catálogo interactivo del acervo físico y digital en BIDIG con filtros avanzados por asignatura y ubicación geográfica.</p>
-                  <a href="https://datastudio.google.com/u/0/reporting/45be3372-3bc9-4955-ae98-5285a9eba877?s=h0cUDW_LSyU" target="_blank" class="btn-main">Abrir Catálogo</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://datastudio.google.com/u/0/reporting/45be3372-3bc9-4955-ae98-5285a9eba877?s=h0cUDW_LSyU"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PILAR 2: INTELIGENCIA ARTIFICIAL -->
-      <div class="bn-pilar-block c2" id="pilar2">
-        <div class="bn-pilar-head">
-          <div class="bn-pilar-num">02</div>
-          <div>
-            <h3>Inteligencia Artificial · Suite Intellectus</h3>
-            <p>Ecosistema de agentes de IA entrenados con la metodología Areandina para potenciar la investigación, citación, ciencia abierta y gestión jurídica.</p>
-          </div>
-        </div>
-        <h4 style="font-family:'Fraunces',serif; font-size:1.1rem; font-weight:800; margin-bottom:1rem; color:var(--purple);">Agentes Activos</h4>
-        <div class="tools-grid">
-          <!-- Astra_Biblio -->
-          <div class="tool-card ia-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1tcHAPzeS0MZrNHt2Gzh3l2juZfNQfGe_" alt="AstraBiblio" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Astra_Biblio</div>
-                  <span class="tool-scope">Búsqueda académica</span>
-                  <p class="tool-desc">Tu guía para la búsqueda de información científica. Crea estrategias de búsqueda para bases de datos académicas y te orienta en el uso de normas de citación como APA, Vancouver, IEEE e ICONTEC.</p>
-                  <a href="https://gemini.google.com/gem/fbe3f62ed376?usp=sharing" target="_blank" class="btn-main">Abrir Asistente</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://gemini.google.com/gem/fbe3f62ed376?usp=sharing"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MentorMind -->
-          <div class="tool-card ia-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/18xmYPBMfnVuagLhVuDvU_59fXesfLSox" alt="MentorMind" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">MentorMind</div>
-                  <span class="tool-scope">Mentor de investigación</span>
-                  <p class="tool-desc">Tu mentor de investigación. Te acompaña paso a paso en la formulación de proyectos, tesis y artículos científicos, fortaleciendo el pensamiento crítico y las buenas prácticas investigativas.</p>
-                  <!-- URL AJUSTADA AQUÍ -->
-                  <a href="https://gemini.google.com/gem/1u0H_KFckqnXXpQXGtZrUDX60KHdY95QG?usp=sharing" target="_blank" class="btn-main">Abrir Asistente</a>
-                </div>
-                <div class="qr-static-box">
-                  <!-- URL AJUSTADA AQUÍ PARA EL QR -->
-                  <div class="qr-holder" data-url="https://gemini.google.com/gem/1u0H_KFckqnXXpQXGtZrUDX60KHdY95QG?usp=sharing"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- LexBot Constitucional -->
-          <div class="tool-card ia-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1CxsRBhrAvRgVOObhr-ADj4JzpFSqmUs7" alt="LexBot Constitucional" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">LexBot Constitucional</div>
-                  <span class="tool-scope">Asistente Jurídico</span>
-                  <p class="tool-desc">Asistente especializado en Derecho Constitucional Colombiano. Explica de forma clara la Constitución, las acciones constitucionales, la organización del Estado y la jurisprudencia de la Corte Constitucional.</p>
-                  <a href="https://gemini.google.com/gem/bb2c21657470?usp=sharing" target="_blank" class="btn-main">Abrir Asistente</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://gemini.google.com/gem/bb2c21657470?usp=sharing"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Asesor de Ciencia Abierta -->
-          <div class="tool-card ia-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1-_sJK6d3fK7FDDLEVPTNDQ0jMIy36_lO" alt="Asesor de Ciencia Abierta" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Asesor de Ciencia Abierta</div>
-                  <span class="tool-scope">Ciencia y Publicación</span>
-                  <p class="tool-desc">Te orienta sobre la Estrategia de Ciencia Abierta de Areandina, sus lineamientos, herramientas y buenas prácticas para fortalecer la investigación abierta, colaborativa y responsable.</p>
-                  <a href="https://gemini.google.com/gem/1NFfCQoK-j3EdSDi_TAjbg0IaVpE1wtWe?usp=sharing" target="_blank" class="btn-main">Abrir Asistente</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://gemini.google.com/gem/1NFfCQoK-j3EdSDi_TAjbg0IaVpE1wtWe?usp=sharing"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ATLAS -->
-          <div class="tool-card ia-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1YsHGo8DD9CRhdVCzSPlxOPZcLFMDaoZp" alt="ATLAS" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">ATLAS</div>
-                  <span class="tool-scope">Bibliometría e Impacto</span>
-                  <p class="tool-desc">Te guía para publicar en acceso abierto sin asumir costos de APC. Verifica si tu revista está cubierta por los acuerdos del Consorcio Colombia y te acompaña en todo el proceso de publicación.</p>
-                  <a href="https://gemini.google.com/gem/a48a02298c58?usp=sharing" target="_blank" class="btn-main">Abrir Asistente</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://gemini.google.com/gem/a48a02298c58?usp=sharing"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PILAR 3 -->
-      <div class="bn-pilar-block c3" id="pilar3">
-        <div class="bn-pilar-head">
-          <div class="bn-pilar-num">03</div>
-          <div>
-            <h3>Formación Digital</h3>
-            <p>Desarrolla competencias digitales e investigativas a través de cursos y experiencias estructuradas de aprendizaje.</p>
-          </div>
-        </div>
-        <div class="tools-grid">
-          <!-- ApropIA -->
-          <div class="tool-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1HwiE9_JtxmqqYN7WndtkruNT2sLSzWV0" alt="ApropIA" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">ApropIA</div>
-                  <span class="tool-scope">Curso Formación IA</span>
-                  <p class="tool-desc">Curso introductorio y práctico de Apropiación de Inteligencia Artificial para la comunidad académica.</p>
-                  <a href="https://areandina-ea.odilotk.es/clubs/join-experience/6RIEKDRV" target="_blank" class="btn-main">Unirse al Curso</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://areandina-ea.odilotk.es/clubs/join-experience/6RIEKDRV"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Google Scholar -->
-          <div class="tool-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/18cRglaDUvqMf4ZsGl8PNBWfLcQvSyTso" alt="Google Scholar" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Google Scholar</div>
-                  <span class="tool-scope">Formación Investigativa</span>
-                  <p class="tool-desc">Crea y optimiza tu perfil en Google Scholar para la gestión de citas y posicionamiento científico.</p>
-                  <a href="https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW" target="_blank" class="btn-main">Acceder</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Normas APA -->
-          <div class="tool-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1-hkoOosAw4o1ZbyZfL80alw8r1p3-K88" alt="Normas APA" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Normas APA 7</div>
-                  <span class="tool-scope">Citación y Estilo</span>
-                  <p class="tool-desc">Guía interactiva y taller práctico para la aplicación precisa del manual de citación APA 7ma edición.</p>
-                  <a href="https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW" target="_blank" class="btn-main">Acceder</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Vancouver -->
-          <div class="tool-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1daWsNJUFmncUHsbzIMx6kFgvv-upyZ8B" alt="Estilo Vancouver" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Estilo Vancouver</div>
-                  <span class="tool-scope">Citación Ciencias de la Salud</span>
-                  <p class="tool-desc">Capacitación en normas de referencias bibliográficas Vancouver aplicadas a las áreas de la salud.</p>
-                  <a href="https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW" target="_blank" class="btn-main">Acceder</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PILAR 4: GESTIÓN E INTELIGENCIA DE DATOS -->
-      <div class="bn-pilar-block c4" id="pilar4">
-        <div class="bn-pilar-head">
-          <div class="bn-pilar-num">04</div>
-          <div>
-            <h3>Gestión e Inteligencia de Datos</h3>
-            <p>Herramientas analíticas y de automatización para transformar los datos de uso en decisiones estratégicas y optimizar la toma de decisiones.</p>
-          </div>
-        </div>
-        <div class="tools-grid">
-          <!-- Tablero SROI -->
-          <div class="tool-card oa-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/13n-M2Nn5dsWyKEHoI9kWH9BKXifBc2mU" alt="Tablero SROI" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Tablero SROI & Analytics</div>
-                  <span class="tool-scope">Retorno Social de Inversión</span>
-                  <p class="tool-desc">Plataforma de análisis de datos para medir el impacto, uso de recursos y retorno social de la inversión de las bibliotecas.</p>
-                  <a href="https://lookerstudio.google.com/u/0/reporting/17154eb5-e2f9-4b6d-9787-8df0c6ff7eb1/page/p_h1x8i4u5ld" target="_blank" class="btn-main">Ver Tablero</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://lookerstudio.google.com/u/0/reporting/17154eb5-e2f9-4b6d-9787-8df0c6ff7eb1/page/p_h1x8i4u5ld"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sistema de Reservas -->
-          <div class="tool-card oa-card">
-            <div class="tool-banner-wrap">
-              <img src="https://lh3.googleusercontent.com/d/1OgitPvAyGgdMrS049Qk-hxVz3W4nQEyu" alt="Reserva de Espacios" class="tool-banner-img">
-            </div>
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Gestión de Reservas</div>
-                  <span class="tool-scope">Automatización de Salas</span>
-                  <p class="tool-desc">Sistema automatizado de agendamiento y reserva de salas de estudio, computadores y espacios colaborativos.</p>
-                  <a href="https://bidig.areandina.edu.co/" target="_blank" class="btn-main">Reservar Espacio</a>
-                </div>
-                <div class="qr-static-box">
-                  <div class="qr-holder" data-url="https://bidig.areandina.edu.co/"></div>
-                  <span class="qr-label">Escanear QR</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PILAR 5: CONECTIVIDAD Y AUTOMATIZACIÓN -->
-      <div class="bn-pilar-block c5" id="pilar5">
-        <div class="bn-pilar-head">
-          <div class="bn-pilar-num">05</div>
-          <div>
-            <h3>Conectividad y Automatización</h3>
-            <p>Integración de aplicaciones mediante Google Apps Script para optimizar procesos internos y externos.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA NEXUSSCRIPT CORE RESTAURADA -->
-        <div class="tool-card leaf-card" style="margin-bottom: 2.5rem; max-width: 900px;">
-          <div class="tool-card-body">
-            <div class="tool-content-layout">
-              <div class="tool-info">
-                <div class="tool-name" style="font-size: 1.3rem;">NexusScript Core</div>
-                <span class="tool-scope">Repositorio Central</span>
-                <p class="tool-desc" style="font-size: 0.95rem; margin-top: 0.3rem;">Repositorio central de código y desarrollos en Google Apps Script para el ecosistema de Bibliotecas Areandina.</p>
-                <!-- URL AJUSTADA AQUÍ -->
-                <a href="https://github.com/nexusscript-core" target="_blank" class="btn-main" style="align-self: flex-start; margin-top: 1rem; padding: 0.6rem 1.5rem;">Abrir Repositorio</a>
-              </div>
-              <div class="qr-static-box">
-                <!-- URL AJUSTADA AQUÍ PARA EL QR -->
-                <div class="qr-holder" data-url="https://github.com/nexusscript-core"></div>
-                <span class="qr-label">Escanear QR</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <h4 style="font-family:'Fraunces',serif; font-size:1.15rem; font-weight:800; margin-bottom:0.6rem; color:var(--leaf);">NexusScript · Ecosistema de Automatización</h4>
-        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 800px;">
-          NexusScript es nuestra suite de scripts e implementaciones en la nube que conectan Google Forms, Sheets y Gmail mediante Google Apps Script (GAS). Estas herramientas reducen la carga operativa manual, agilizan las notificaciones a los usuarios y garantizan el registro sistemático de datos para la toma de decisiones estratégicas.
-        </p>
-
-        <!-- Diagrama 1: Gestión de Turnos -->
-        <div class="flow-card">
-          <h4>01. Gestión Inteligente de Turnos y Agendamiento</h4>
-          <p>Captura solicitudes presenciales, calcula el número de atención en cola y envía notificaciones por correo en tiempo real.</p>
-          <div class="flow-row">
-            <div class="flow-box">📝 Usuario llena Formulario<small>Google Forms</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">⚙️ Apps Script procesa<small>Calcula turno & cola</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">📩 Notificación por Email<small>Gmail API en tiempo real</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">📊 Registro Centralizado<small>Google Sheets / Looker</small></div>
-          </div>
-        </div>
-
-        <!-- Diagrama 2: Evaluación de Proveedores -->
-        <div class="flow-card">
-          <h4>02. Evaluación y Calificación de Proveedores</h4>
-          <p>Sistematiza las evaluaciones periódicas de proveedores de bases de datos y recursos digitales con cálculo automático de scores.</p>
-          <div class="flow-row">
-            <div class="flow-box">📋 Evaluación por Analista<small>Criterios cuantitativos</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">🧮 Motor de Cálculo (GAS)<small>Ponderación e índices</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">📑 Generación de Reporte<small>Consolidado ejecutivo</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">📈 Tablero de Decisiones<small>Decisión de renovación</small></div>
-          </div>
-        </div>
-
-        <!-- Diagrama 3: Generación Automática de Paz y Salvo -->
-        <div class="flow-card">
-          <h4>03. Generación Automática de Paz y Salvo</h4>
-          <p>Verifica el estado del usuario en el SGB y emite el documento oficial de Paz y Salvo en PDF enviado directamente al correo institucional.</p>
-          <div class="flow-row">
-            <div class="flow-box">🎓 Solicitud de Grado<small>Formulario de Paz y Salvo</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">🔍 Verificación SGB<small>Estado de cuenta / préstamos</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">📄 Generación de PDF<small>Documento PDF con sello digital</small></div>
-            <div class="flow-arrow">➔</div>
-            <div class="flow-box">✉️ Envío al Correo<small>Gmail automatizado</small></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PROYECTOS EN DESARROLLO -->
-      <div class="bn-pilar-block" id="proyectos-desarrollo" style="border-top: 1px dashed var(--border); padding-top: 3rem; margin-top: 4rem;">
-        <div class="bn-pilar-head">
-          <div class="bn-pilar-num" style="color: var(--muted); font-size: 1.8rem; font-family: 'Inter', sans-serif;">🚧</div>
-          <div>
-            <h3 style="color: var(--ink);">Proyectos en Desarrollo</h3>
-            <p>Iniciativas y herramientas que se encuentran actualmente en fase de prototipado, investigación o pruebas beta dentro del ecosistema BiblioNova.</p>
-          </div>
-        </div>
-        <div class="tools-grid">
-          
-          <div class="tool-card dev-card">
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Sistema Integrado de Colecciones (V2)</div>
-                  <span class="tool-scope" style="color: var(--muted); background: rgba(91, 114, 136, 0.1); border-color: rgba(91, 114, 136, 0.3);">Fase de Pruebas</span>
-                  <p class="tool-desc">Actualización de la plataforma interactiva del catálogo físico y digital, implementando nuevos algoritmos de recomendación de lectura y conectividad más rápida.</p>
-                  <a href="#" class="btn-main" onclick="event.preventDefault();">Próximamente</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tool-card dev-card">
-            <div class="tool-card-body">
-              <div class="tool-content-layout">
-                <div class="tool-info">
-                  <div class="tool-name">Asistente de Catalogación IA</div>
-                  <span class="tool-scope" style="color: var(--muted); background: rgba(91, 114, 136, 0.1); border-color: rgba(91, 114, 136, 0.3);">Prototipado</span>
-                  <p class="tool-desc">Entrenamiento de un modelo de lenguaje para asistir al personal bibliotecario en la asignación de metadatos, materias y clasificación Dewey de forma semiautomática.</p>
-                  <a href="#" class="btn-main" onclick="event.preventDefault();">Próximamente</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
+      <!-- Los tres pilares se construyen desde el modelo de datos -->
+      <div id="pilaresContenido"></div>
 
     </div>
   </section>
 
-  <!-- SECCIÓN EQUIPO DE TRABAJO RESTAURADA Y CON IMÁGENES ACTUALIZADAS -->
+  <!-- SECCIÓN EQUIPO DE TRABAJO -->
   <section id="equipo">
     <div class="container">
       <div class="section-label">Liderazgo y Gestión</div>
@@ -807,7 +423,6 @@
       </p>
 
       <div class="equipo-grid">
-        <!-- Andrea Pumarejo -->
         <div class="member-card">
           <div class="member-img-wrap">
             <img src="https://bidig.areandina.edu.co/wp-content/uploads/2026/06/Andrea-Pumarejo-1.png" alt="Andrea Pumarejo" class="member-img">
@@ -815,8 +430,7 @@
           <h4>Andrea Pumarejo</h4>
           <p class="rol">Coordinadora</p>
         </div>
-        
-        <!-- Rosa Fermina -->
+
         <div class="member-card">
           <div class="member-img-wrap">
             <img src="https://bidig.areandina.edu.co/wp-content/uploads/2025/12/Rosa-Fermina.png" alt="Rosa Fermina" class="member-img">
@@ -825,16 +439,14 @@
           <p class="rol">Subdirectora de Bibliotecas Areandina</p>
         </div>
 
-        <!-- Cristian Cardenas  -->
         <div class="member-card">
           <div class="member-img-wrap">
-            <img src="https://bidig.areandina.edu.co/wp-content/uploads/2025/12/Cristian.png" alt="Cristian" class="member-img">
+            <img src="https://bidig.areandina.edu.co/wp-content/uploads/2025/12/Cristian.png" alt="Cristian Cardenas" class="member-img">
           </div>
-          <h4>Cristian Cardenas </h4>
+          <h4>Cristian Cardenas</h4>
           <p class="rol">Auxiliar</p>
         </div>
 
-        <!-- William Saboya -->
         <div class="member-card">
           <div class="member-img-wrap">
             <img src="https://bidig.areandina.edu.co/wp-content/uploads/2025/12/William-Sayoya.png" alt="William Saboya" class="member-img">
@@ -843,7 +455,6 @@
           <p class="rol">Analista</p>
         </div>
 
-        <!-- Alejandro Labrada -->
         <div class="member-card">
           <div class="member-img-wrap">
             <img src="https://bidig.areandina.edu.co/wp-content/uploads/2025/12/Alejandro-Labrada.png" alt="Alejandro Labrada" class="member-img">
@@ -854,35 +465,941 @@
       </div>
     </div>
   </section>
-
 </main>
 
-<script>
-  // Generación automática de QRs al cargar la página
-  document.addEventListener("DOMContentLoaded", function() {
-    const qrContainers = document.querySelectorAll('.qr-holder');
-    qrContainers.forEach(container => {
-      const url = container.getAttribute('data-url');
-      if (url && typeof QRCode !== 'undefined') {
-        new QRCode(container, {
-          text: url,
-          width: 85,
-          height: 85,
-          colorDark : "#14324a",
-          colorLight : "#ffffff",
-          correctLevel : QRCode.CorrectLevel.H
-        });
-      }
-    });
+<footer>
+  <strong>BiblioNova</strong> · Ecosistema de Innovación · Bibliotecas Areandina
+</footer>
 
-    // Indicador de barra de progreso de scroll
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById("progressBar").style.width = scrolled + "%";
-    });
+<!-- FICHA DE INICIATIVA -->
+<div class="ficha-overlay" id="fichaOverlay">
+  <div class="ficha" role="dialog" aria-modal="true" aria-labelledby="fichaTitulo">
+    <button class="ficha-close" id="fichaClose" aria-label="Cerrar ficha">✕</button>
+    <div class="ficha-head">
+      <div class="ficha-eyebrow" id="fichaEyebrow"></div>
+      <h3 id="fichaTitulo"></h3>
+      <div class="ficha-chips" id="fichaChips"></div>
+    </div>
+    <div class="ficha-body">
+      <dl class="ficha-grid" id="fichaGrid"></dl>
+      <div class="ficha-actions" id="fichaActions"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   MODELO DE DATOS · BiblioNova
+   Para actualizar el tablero solo se edita este bloque.
+
+   estado: 'activo'      → en operación (chip verde en la leyenda)
+           'desarrollo'  → proyecto en curso (borde punteado + chip naranja)
+           'pendiente'   → falta definir la información (chip gris)
+
+   ficha: los 10 campos del Portal BiblioNova. Todo campo vacío ('')
+          se muestra automáticamente como "Por documentar".
+   ═══════════════════════════════════════════════════════════════════ */
+
+const PILARES = [
+  {
+    id: 'pilar1', num: '01', clase: 'p1', icono: '🧭',
+    nombre: 'Experiencia al Usuario',
+    resumen: 'Elimina las barreras entre el usuario y la información: portales, asistentes de IA, autogestión de servicios y formación en competencias digitales.',
+    grupos: [
+      { id: 'portales', titulo: 'Portales y descubrimiento', desc: 'Puntos de entrada al ecosistema digital de las Bibliotecas Areandina.' },
+      { id: 'intellectus', titulo: 'Intellectus · Suite de agentes de IA', desc: 'Ecosistema de agentes entrenados con la metodología Areandina para acompañar la búsqueda, la citación, la investigación, la ciencia abierta y la consulta jurídica 24/7.' },
+      { id: 'autogestion', titulo: 'Autogestión de servicios', desc: 'Servicios que el usuario resuelve de forma autónoma, sin intermediación del personal de biblioteca.' },
+      { id: 'formacion', titulo: 'Formación y alfabetización', desc: 'Experiencias de aprendizaje para desarrollar competencias digitales, investigativas y de citación.' }
+    ]
+  },
+  {
+    id: 'pilar2', num: '02', clase: 'p2', icono: '📊',
+    nombre: 'Gestión Institucional',
+    resumen: 'Convierte los datos de la biblioteca en decisiones: tableros de inteligencia, integración con los sistemas institucionales y automatización de los flujos de solicitud.',
+    grupos: [
+      { id: 'tableros', titulo: 'Tableros e inteligencia de datos', desc: 'Analítica para el seguimiento de indicadores, presupuesto e impacto de las bibliotecas.' },
+      { id: 'integraciones', titulo: 'Integraciones y procesos técnicos', desc: 'Conexión entre el sistema bibliotecario, los portales y las herramientas institucionales.' },
+      { id: 'automatizaciones', titulo: 'Automatizaciones · NexusScript', desc: 'Suite de scripts e implementaciones en la nube que conectan Google Forms, Sheets y Gmail mediante Google Apps Script (GAS). Reducen la carga operativa manual, agilizan las notificaciones y garantizan el registro sistemático de datos.' }
+    ]
+  },
+  {
+    id: 'pilar3', num: '03', clase: 'p3', icono: '🎓',
+    nombre: 'Academia',
+    resumen: 'Conecta las colecciones y el acompañamiento investigativo con el currículo, la docencia y la producción científica de la institución.',
+    grupos: [
+      { id: 'colecciones', titulo: 'Colecciones con propósito académico', desc: 'Gestión y visibilidad del acervo físico y digital alineado con los programas académicos.' },
+      { id: 'investigacion', titulo: 'Acompañamiento a la investigación', desc: 'Ruta integral desde la búsqueda de información hasta la medición del impacto académico.' }
+    ]
+  }
+];
+
+const INICIATIVAS = [
+
+  /* ─────────── PILAR 1 · EXPERIENCIA AL USUARIO ─────────── */
+
+  {
+    pilar: 'pilar1', grupo: 'portales', estilo: '',
+    nombre: 'BiblioClick',
+    scope: 'Portal de recursos',
+    estado: 'activo',
+    icono: '🔎',
+    img: 'https://lh3.googleusercontent.com/d/1mSVOK6dnf3StAFSz3iWsO5Bsyg2mLh3x',
+    desc: 'Portal modernizado con buscador inteligente por palabras clave y micrositios especializados por facultad con identidad visual propia.',
+    url: 'https://bidig.areandina.edu.co/main-home/inicio-todas-las-facultades-micro-facultades/',
+    cta: 'Abrir Portal',
+    ficha: {
+      definicion: 'Portal de recursos digitales organizados por facultad, con buscador inteligente por palabras clave y micrositios especializados con identidad visual propia.',
+      descripcionTecnica: '',
+      desarrolladores: '',
+      objetivo: 'Eliminar las barreras entre el usuario y la información científica facilitando un acceso integrado e intuitivo a los recursos suscritos.',
+      comunidades: 'Estudiantes, docentes e investigadores de todas las facultades.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'portales', estilo: '',
+    nombre: 'Gestión BIDIG',
+    scope: 'Administración del portal',
+    estado: 'desarrollo',
+    icono: '🛠️',
+    img: '',
+    desc: 'Estrategia para administrar, actualizar y mejorar continuamente el portal BIDIG y sus servicios digitales. Comprende la organización de contenidos, revisión de enlaces, actualización de recursos, análisis de navegación y optimización de la experiencia de los usuarios.',
+    url: 'https://bidig.areandina.edu.co/',
+    cta: 'Abrir BIDIG',
+    ficha: {
+      definicion: 'Estrategia para administrar, actualizar y mejorar continuamente el portal BIDIG y sus servicios digitales.',
+      descripcionTecnica: 'Comprende la organización de contenidos, revisión de enlaces, actualización de recursos, análisis de navegación y optimización de la experiencia de los usuarios.',
+      desarrolladores: '',
+      objetivo: '',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+
+  /* Intellectus · agentes de IA */
+  {
+    pilar: 'pilar1', grupo: 'intellectus', estilo: 'ia-card',
+    nombre: 'Astra_Biblio',
+    scope: 'Búsqueda académica',
+    estado: 'activo',
+    icono: '🤖',
+    img: 'https://lh3.googleusercontent.com/d/1tcHAPzeS0MZrNHt2Gzh3l2juZfNQfGe_',
+    desc: 'Tu guía para la búsqueda de información científica. Crea estrategias de búsqueda para bases de datos académicas y te orienta en el uso de normas de citación como APA, Vancouver, IEEE e ICONTEC.',
+    url: 'https://gemini.google.com/gem/fbe3f62ed376?usp=sharing',
+    cta: 'Abrir Asistente',
+    ficha: {
+      definicion: 'Agente de IA de la suite Intellectus especializado en construir estrategias de búsqueda para bases de datos académicas y orientar en normas de citación.',
+      descripcionTecnica: 'Gem de Google Gemini entrenado con la metodología de búsqueda de las Bibliotecas Areandina.',
+      desarrolladores: '',
+      objetivo: 'Acompañar al usuario en la formulación de estrategias de búsqueda efectivas y en la aplicación correcta de las normas de citación.',
+      comunidades: 'Estudiantes e investigadores de todas las facultades.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'intellectus', estilo: 'ia-card',
+    nombre: 'MentorMind',
+    scope: 'Mentor de investigación',
+    estado: 'activo',
+    icono: '🧠',
+    img: 'https://lh3.googleusercontent.com/d/18xmYPBMfnVuagLhVuDvU_59fXesfLSox',
+    desc: 'Tu mentor de investigación. Te acompaña paso a paso en la formulación de proyectos, tesis y artículos científicos, fortaleciendo el pensamiento crítico y las buenas prácticas investigativas.',
+    url: 'https://gemini.google.com/gem/1u0H_KFckqnXXpQXGtZrUDX60KHdY95QG?usp=sharing',
+    cta: 'Abrir Asistente',
+    ficha: {
+      definicion: 'Agente de IA que acompaña la formulación de proyectos, tesis y artículos científicos.',
+      descripcionTecnica: 'Gem de Google Gemini entrenado con las buenas prácticas investigativas de Areandina.',
+      desarrolladores: '',
+      objetivo: 'Fortalecer el pensamiento crítico y las buenas prácticas investigativas de la comunidad académica.',
+      comunidades: 'Estudiantes de pregrado y posgrado, semilleros e investigadores.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'intellectus', estilo: 'ia-card',
+    nombre: 'LexBot Constitucional',
+    scope: 'Asistente jurídico',
+    estado: 'activo',
+    icono: '⚖️',
+    img: 'https://lh3.googleusercontent.com/d/1CxsRBhrAvRgVOObhr-ADj4JzpFSqmUs7',
+    desc: 'Asistente especializado en Derecho Constitucional Colombiano. Explica de forma clara la Constitución, las acciones constitucionales, la organización del Estado y la jurisprudencia de la Corte Constitucional.',
+    url: 'https://gemini.google.com/gem/bb2c21657470?usp=sharing',
+    cta: 'Abrir Asistente',
+    ficha: {
+      definicion: 'Agente de IA especializado en Derecho Constitucional Colombiano.',
+      descripcionTecnica: 'Gem de Google Gemini entrenado con fuentes normativas y jurisprudenciales colombianas.',
+      desarrolladores: '',
+      objetivo: 'Explicar de forma clara la Constitución, las acciones constitucionales, la organización del Estado y la jurisprudencia de la Corte Constitucional.',
+      comunidades: 'Estudiantes y docentes de la Facultad de Derecho.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'intellectus', estilo: 'ia-card',
+    nombre: 'Asesor de Ciencia Abierta',
+    scope: 'Ciencia y publicación',
+    estado: 'activo',
+    icono: '🔓',
+    img: 'https://lh3.googleusercontent.com/d/1-_sJK6d3fK7FDDLEVPTNDQ0jMIy36_lO',
+    desc: 'Te orienta sobre la Estrategia de Ciencia Abierta de Areandina, sus lineamientos, herramientas y buenas prácticas para fortalecer la investigación abierta, colaborativa y responsable.',
+    url: 'https://gemini.google.com/gem/1NFfCQoK-j3EdSDi_TAjbg0IaVpE1wtWe?usp=sharing',
+    cta: 'Abrir Asistente',
+    ficha: {
+      definicion: 'Agente de IA orientador de la Estrategia de Ciencia Abierta de Areandina.',
+      descripcionTecnica: 'Gem de Google Gemini entrenado con los lineamientos institucionales de ciencia abierta.',
+      desarrolladores: '',
+      objetivo: 'Fortalecer la investigación abierta, colaborativa y responsable en la institución.',
+      comunidades: 'Investigadores, semilleros y grupos de investigación.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'intellectus', estilo: 'ia-card',
+    nombre: 'ATLAS',
+    scope: 'Bibliometría e impacto',
+    estado: 'activo',
+    icono: '📈',
+    img: 'https://lh3.googleusercontent.com/d/1YsHGo8DD9CRhdVCzSPlxOPZcLFMDaoZp',
+    desc: 'Te guía para publicar en acceso abierto sin asumir costos de APC. Verifica si tu revista está cubierta por los acuerdos del Consorcio Colombia y te acompaña en todo el proceso de publicación.',
+    url: 'https://gemini.google.com/gem/a48a02298c58?usp=sharing',
+    cta: 'Abrir Asistente',
+    ficha: {
+      definicion: 'Agente de IA que guía el proceso de publicación en acceso abierto sin costos de APC.',
+      descripcionTecnica: 'Gem de Google Gemini con los acuerdos transformativos del Consorcio Colombia.',
+      desarrolladores: '',
+      objetivo: 'Ampliar la visibilidad de la producción científica institucional reduciendo las barreras económicas de publicación.',
+      comunidades: 'Investigadores y docentes con producción científica.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+
+  /* Autogestión */
+  {
+    pilar: 'pilar1', grupo: 'autogestion', estilo: '',
+    nombre: 'Autopréstamo',
+    scope: 'Autogestión de circulación',
+    estado: 'desarrollo',
+    icono: '📚',
+    img: '',
+    desc: 'Solución que permitirá a los usuarios realizar de manera autónoma el préstamo y la renovación de materiales bibliográficos, reduciendo tiempos de espera y facilitando el acceso a los servicios de circulación.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Solución de autogestión para el préstamo y la renovación autónoma de materiales bibliográficos.',
+      descripcionTecnica: 'Permitirá al usuario ejecutar la transacción de préstamo y renovación sin intermediación del personal de circulación.',
+      desarrolladores: '',
+      objetivo: 'Reducir tiempos de espera y facilitar el acceso a los servicios de circulación.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'autogestion', estilo: '',
+    nombre: 'Autoarchivo DigitK',
+    scope: 'Repositorio institucional',
+    estado: 'desarrollo',
+    icono: '🗂️',
+    img: '',
+    desc: 'Herramienta para simplificar la entrega y organización de documentos destinados al repositorio institucional DigitK. Permitirá registrar archivos, validar información básica, clasificarlos y dirigirlos automáticamente al flujo de revisión correspondiente.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Herramienta de autoarchivo para la entrega y organización de documentos destinados al repositorio institucional DigitK.',
+      descripcionTecnica: 'Permitirá registrar archivos, validar información básica, clasificarlos y dirigirlos automáticamente al flujo de revisión correspondiente.',
+      desarrolladores: '',
+      objetivo: 'Simplificar el depósito de la producción académica en el repositorio institucional.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+
+  /* Formación */
+  {
+    pilar: 'pilar1', grupo: 'formacion', estilo: '',
+    nombre: 'ApropIA',
+    scope: 'Curso de formación en IA',
+    estado: 'activo',
+    icono: '✨',
+    img: 'https://lh3.googleusercontent.com/d/1HwiE9_JtxmqqYN7WndtkruNT2sLSzWV0',
+    desc: 'Curso introductorio y práctico de Apropiación de Inteligencia Artificial para la comunidad académica.',
+    url: 'https://areandina-ea.odilotk.es/clubs/join-experience/6RIEKDRV',
+    cta: 'Unirse al Curso',
+    ficha: {
+      definicion: 'Curso introductorio y práctico de apropiación de Inteligencia Artificial para la comunidad académica.',
+      descripcionTecnica: 'Experiencia de aprendizaje alojada en la plataforma Odilo (Areandina EA).',
+      desarrolladores: '',
+      objetivo: 'Desarrollar competencias básicas de uso responsable y crítico de la Inteligencia Artificial.',
+      comunidades: 'Comunidad académica Areandina.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'formacion', estilo: '',
+    nombre: 'Librín',
+    scope: 'Por definir',
+    estado: 'pendiente',
+    icono: '📖',
+    img: '',
+    desc: 'Iniciativa incluida en la reestructuración del Pilar de Experiencia al Usuario. Pendiente de definir alcance, descripción, público objetivo y enlace de acceso.',
+    url: '',
+    cta: 'Por definir',
+    ficha: {
+      definicion: '',
+      descripcionTecnica: '',
+      desarrolladores: '',
+      objetivo: '',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'formacion', estilo: '',
+    nombre: 'Google Scholar',
+    scope: 'Formación investigativa',
+    estado: 'activo',
+    icono: '🎓',
+    img: 'https://lh3.googleusercontent.com/d/18cRglaDUvqMf4ZsGl8PNBWfLcQvSyTso',
+    desc: 'Crea y optimiza tu perfil en Google Scholar para la gestión de citas y posicionamiento científico.',
+    url: 'https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW',
+    cta: 'Acceder',
+    ficha: {
+      definicion: 'Experiencia formativa para crear y optimizar el perfil en Google Scholar.',
+      descripcionTecnica: 'Experiencia de aprendizaje alojada en la plataforma Odilo (Areandina EA).',
+      desarrolladores: '',
+      objetivo: 'Mejorar la gestión de citas y el posicionamiento científico de los investigadores.',
+      comunidades: 'Docentes e investigadores.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'formacion', estilo: '',
+    nombre: 'Normas APA 7',
+    scope: 'Citación y estilo',
+    estado: 'activo',
+    icono: '📝',
+    img: 'https://lh3.googleusercontent.com/d/1-hkoOosAw4o1ZbyZfL80alw8r1p3-K88',
+    desc: 'Guía interactiva y taller práctico para la aplicación precisa del manual de citación APA 7ma edición.',
+    url: 'https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW',
+    cta: 'Acceder',
+    ficha: {
+      definicion: 'Guía interactiva y taller práctico del manual de citación APA 7ma edición.',
+      descripcionTecnica: 'Experiencia de aprendizaje alojada en la plataforma Odilo (Areandina EA).',
+      desarrolladores: '',
+      objetivo: 'Asegurar la aplicación precisa de las normas de citación APA en los trabajos académicos.',
+      comunidades: 'Estudiantes y docentes de todas las facultades.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar1', grupo: 'formacion', estilo: '',
+    nombre: 'Estilo Vancouver',
+    scope: 'Citación ciencias de la salud',
+    estado: 'activo',
+    icono: '🩺',
+    img: 'https://lh3.googleusercontent.com/d/1daWsNJUFmncUHsbzIMx6kFgvv-upyZ8B',
+    desc: 'Capacitación en normas de referencias bibliográficas Vancouver aplicadas a las áreas de la salud.',
+    url: 'https://areandina-ea.odilotk.es/clubs/join-experience/UC0Z5ZSW',
+    cta: 'Acceder',
+    ficha: {
+      definicion: 'Capacitación en normas de referencias bibliográficas Vancouver.',
+      descripcionTecnica: 'Experiencia de aprendizaje alojada en la plataforma Odilo (Areandina EA).',
+      desarrolladores: '',
+      objetivo: 'Aplicar correctamente el estilo Vancouver en la producción académica del área de la salud.',
+      comunidades: 'Estudiantes y docentes de Ciencias de la Salud.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+
+  /* ─────────── PILAR 2 · GESTIÓN INSTITUCIONAL ─────────── */
+
+  {
+    pilar: 'pilar2', grupo: 'tableros', estilo: 'oa-card',
+    nombre: 'Tablero SROI & Analytics',
+    scope: 'Retorno social de la inversión',
+    estado: 'activo',
+    icono: '💠',
+    img: 'https://lh3.googleusercontent.com/d/13n-M2Nn5dsWyKEHoI9kWH9BKXifBc2mU',
+    desc: 'Plataforma de análisis de datos para medir el impacto, uso de recursos y retorno social de la inversión de las bibliotecas.',
+    url: 'https://lookerstudio.google.com/u/0/reporting/17154eb5-e2f9-4b6d-9787-8df0c6ff7eb1/page/p_h1x8i4u5ld',
+    cta: 'Ver Tablero',
+    ficha: {
+      definicion: 'Plataforma de análisis de datos que mide el impacto, el uso de recursos y el retorno social de la inversión de las bibliotecas.',
+      descripcionTecnica: 'Tablero desarrollado en Looker Studio sobre las fuentes de datos de uso de recursos.',
+      desarrolladores: '',
+      objetivo: 'Transformar los datos de uso en decisiones estratégicas y evidenciar el valor social de la biblioteca.',
+      comunidades: 'Dirección de Bibliotecas, decanaturas y áreas administrativas.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'tableros', estilo: 'oa-card',
+    nombre: 'Tablero Estadístico',
+    scope: 'Indicadores de gestión',
+    estado: 'desarrollo',
+    icono: '📶',
+    img: '',
+    desc: 'Herramienta desarrollada en Power BI para consolidar, visualizar y analizar la información estadística de la biblioteca. Permitirá reportar los usuarios activos y realizar el seguimiento de los indicadores de gestión, facilitando la consulta de resultados por periodo, sede, programa académico y tipo de usuario.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Herramienta para consolidar, visualizar y analizar la información estadística de la biblioteca.',
+      descripcionTecnica: 'Desarrollada en Power BI. Permitirá reportar los usuarios activos y hacer seguimiento a los indicadores de gestión, con consulta de resultados por periodo, sede, programa académico y tipo de usuario.',
+      desarrolladores: '',
+      objetivo: 'Fortalecer el monitoreo del desempeño y la toma de decisiones basada en datos.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'tableros', estilo: 'oa-card',
+    nombre: 'Tablero Adquisiciones',
+    scope: 'Ejecución presupuestal',
+    estado: 'desarrollo',
+    icono: '💰',
+    img: '',
+    desc: 'Herramienta de inteligencia institucional para gestionar, controlar y hacer seguimiento al presupuesto destinado a la adquisición de recursos bibliográficos y digitales de la biblioteca.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Herramienta de inteligencia institucional diseñada para gestionar, controlar y hacer seguimiento al presupuesto destinado a la adquisición de recursos bibliográficos y digitales de la biblioteca.',
+      descripcionTecnica: 'Permitirá visualizar la ejecución presupuestal por sede, facultad, programa académico, tipo de recurso y proveedor; comparar el presupuesto asignado, comprometido y ejecutado; y generar alertas.',
+      desarrolladores: '',
+      objetivo: 'Apoyar la planeación y la toma de decisiones sobre la inversión en recursos bibliográficos.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'tableros', estilo: 'oa-card',
+    nombre: 'Tablero Procesos Técnicos',
+    scope: 'Por definir',
+    estado: 'pendiente',
+    icono: '🧾',
+    img: '',
+    desc: 'Tablero incluido en la reestructuración del Pilar de Gestión Institucional. Pendiente de definir alcance, indicadores, herramienta de desarrollo y enlace de acceso.',
+    url: '',
+    cta: 'Por definir',
+    ficha: {
+      definicion: '', descripcionTecnica: '', desarrolladores: '', objetivo: '',
+      comunidades: '', resultados: '', seguimientos: '', versiones: '', proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'integraciones', estilo: 'oa-card',
+    nombre: 'Integración Koha',
+    scope: 'Sistema bibliotecario',
+    estado: 'desarrollo',
+    icono: '🔗',
+    img: '',
+    desc: 'Proyecto para conectar el sistema bibliotecario Koha con formularios, portales, tableros, asistentes y automatizaciones institucionales.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Proyecto para conectar el sistema bibliotecario Koha con formularios, portales, tableros, asistentes y automatizaciones institucionales.',
+      descripcionTecnica: 'Permitirá consultar información actualizada sobre usuarios, préstamos, colecciones y disponibilidad.',
+      desarrolladores: '',
+      objetivo: 'Evitar registros duplicados y procesos manuales en todo el ecosistema.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'integraciones', estilo: 'oa-card',
+    nombre: 'Asistente de Catalogación IA',
+    scope: 'Procesos técnicos',
+    estado: 'desarrollo',
+    icono: '🏷️',
+    img: '',
+    desc: 'Entrenamiento de un modelo de lenguaje para asistir al personal bibliotecario en la asignación de metadatos, materias y clasificación Dewey de forma semiautomática.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Modelo de lenguaje que asiste al personal bibliotecario en la catalogación.',
+      descripcionTecnica: 'Asignación semiautomática de metadatos, materias y clasificación Dewey.',
+      desarrolladores: '',
+      objetivo: 'Reducir el tiempo de procesamiento técnico y homogeneizar la calidad de los registros.',
+      comunidades: 'Personal de procesos técnicos de las Bibliotecas Areandina.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'automatizaciones', estilo: 'leaf-card',
+    nombre: 'NexusScript Core',
+    scope: 'Repositorio central',
+    estado: 'activo',
+    icono: '⚙️',
+    img: '',
+    desc: 'Repositorio central de código y desarrollos en Google Apps Script para el ecosistema de Bibliotecas Areandina.',
+    url: 'https://github.com/nexusscript-core',
+    cta: 'Abrir Repositorio',
+    ficha: {
+      definicion: 'Repositorio central de código y desarrollos en Google Apps Script del ecosistema BiblioNova.',
+      descripcionTecnica: 'Base de código común de los flujos que conectan Google Forms, Sheets, Gmail y Looker Studio.',
+      desarrolladores: '',
+      objetivo: 'Centralizar, versionar y reutilizar los desarrollos de automatización de las bibliotecas.',
+      comunidades: 'Equipo de Bibliotecas Areandina.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'automatizaciones', estilo: 'leaf-card',
+    nombre: 'Solicitudes · Reserva de Espacios',
+    scope: 'Automatización de salas',
+    estado: 'activo',
+    icono: '🪑',
+    img: 'https://lh3.googleusercontent.com/d/1OgitPvAyGgdMrS049Qk-hxVz3W4nQEyu',
+    desc: 'Sistema automatizado de agendamiento y reserva de salas de estudio, computadores y espacios colaborativos.',
+    url: 'https://bidig.areandina.edu.co/',
+    cta: 'Reservar Espacio',
+    ficha: {
+      definicion: 'Sistema automatizado de agendamiento y reserva de salas de estudio, computadores y espacios colaborativos.',
+      descripcionTecnica: 'Flujo Google Forms → Apps Script → Gmail → Sheets con registro centralizado.',
+      desarrolladores: '',
+      objetivo: 'Optimizar el uso de los espacios físicos y eliminar la gestión manual de reservas.',
+      comunidades: 'Estudiantes y docentes usuarios de los espacios de biblioteca.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'automatizaciones', estilo: 'leaf-card',
+    nombre: 'Solicitudes · Marketing',
+    scope: 'Por definir',
+    estado: 'pendiente',
+    icono: '📣',
+    img: '',
+    desc: 'Flujo de solicitudes incluido en la reestructuración. Pendiente de definir alcance, responsables, formulario de entrada y enlace de acceso.',
+    url: '',
+    cta: 'Por definir',
+    ficha: {
+      definicion: '', descripcionTecnica: '', desarrolladores: '', objetivo: '',
+      comunidades: '', resultados: '', seguimientos: '', versiones: '', proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'automatizaciones', estilo: 'leaf-card',
+    nombre: 'Solicitudes · Acreditación',
+    scope: 'Por definir',
+    estado: 'pendiente',
+    icono: '🏅',
+    img: '',
+    desc: 'Flujo de solicitudes incluido en la reestructuración. Pendiente de definir alcance, responsables, formulario de entrada y enlace de acceso.',
+    url: '',
+    cta: 'Por definir',
+    ficha: {
+      definicion: '', descripcionTecnica: '', desarrolladores: '', objetivo: '',
+      comunidades: '', resultados: '', seguimientos: '', versiones: '', proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'automatizaciones', estilo: 'leaf-card',
+    nombre: 'Solicitudes · DigitK',
+    scope: 'Repositorio institucional',
+    estado: 'desarrollo',
+    icono: '📥',
+    img: '',
+    desc: 'Flujo automatizado para recibir, asignar y hacer seguimiento a las solicitudes relacionadas con el repositorio institucional DigitK.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Flujo automatizado para recibir, asignar y hacer seguimiento a las solicitudes relacionadas con el repositorio institucional DigitK.',
+      descripcionTecnica: 'Incluirá notificaciones, responsables, estados, tiempos de atención y evidencias de cierre.',
+      desarrolladores: '',
+      objetivo: 'Trazabilidad completa de las solicitudes del repositorio institucional.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar2', grupo: 'automatizaciones', estilo: 'leaf-card',
+    nombre: 'Solicitudes · Formación de Usuarios',
+    scope: 'Capacitaciones',
+    estado: 'desarrollo',
+    icono: '🗓️',
+    img: '',
+    desc: 'Herramienta para centralizar las solicitudes de capacitaciones realizadas por docentes, programas y dependencias.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Herramienta para centralizar las solicitudes de capacitaciones realizadas por docentes, programas y dependencias.',
+      descripcionTecnica: 'Automatizará el registro, la asignación del bibliotecario, la programación, las confirmaciones, la asistencia y la consolidación de resultados.',
+      desarrolladores: '',
+      objetivo: 'Ordenar la demanda de formación y medir su cobertura real.',
+      comunidades: 'Docentes, programas académicos y dependencias.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+
+  /* ─────────── PILAR 3 · ACADEMIA ─────────── */
+
+  {
+    pilar: 'pilar3', grupo: 'colecciones', estilo: 'teal-card',
+    nombre: 'Colecciones con Sentido',
+    scope: 'Catálogo interactivo · BIDIG',
+    estado: 'activo',
+    icono: '📚',
+    img: 'https://lh3.googleusercontent.com/d/13xixGTpApTpanEEd9aHCKv3w_kbS55zH',
+    desc: 'Catálogo interactivo del acervo físico y digital en BIDIG con filtros avanzados por asignatura y ubicación geográfica.',
+    url: 'https://datastudio.google.com/u/0/reporting/45be3372-3bc9-4955-ae98-5285a9eba877?s=h0cUDW_LSyU',
+    cta: 'Abrir Catálogo',
+    ficha: {
+      definicion: 'Catálogo interactivo del acervo físico y digital publicado en BIDIG.',
+      descripcionTecnica: 'Tablero con filtros avanzados por asignatura y ubicación geográfica.',
+      desarrolladores: '',
+      objetivo: 'Conectar la colección con los programas académicos y facilitar su descubrimiento.',
+      comunidades: 'Docentes, estudiantes y comités curriculares.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar3', grupo: 'colecciones', estilo: 'teal-card',
+    nombre: 'Selecciones con Sentido',
+    scope: 'Por definir',
+    estado: 'pendiente',
+    icono: '🎯',
+    img: '',
+    desc: 'Iniciativa incluida en la reestructuración del Pilar de Academia. Pendiente de precisar en qué se diferencia de Colecciones con Sentido, su alcance y su enlace de acceso.',
+    url: '',
+    cta: 'Por definir',
+    ficha: {
+      definicion: '', descripcionTecnica: '', desarrolladores: '', objetivo: '',
+      comunidades: '', resultados: '', seguimientos: '', versiones: '', proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar3', grupo: 'colecciones', estilo: 'teal-card',
+    nombre: 'Sistema Integrado de Colecciones (V2)',
+    scope: 'Fase de pruebas',
+    estado: 'desarrollo',
+    icono: '🔄',
+    img: '',
+    desc: 'Actualización de la plataforma interactiva del catálogo físico y digital, implementando nuevos algoritmos de recomendación de lectura y conectividad más rápida.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Segunda versión de la plataforma interactiva del catálogo físico y digital.',
+      descripcionTecnica: 'Nuevos algoritmos de recomendación de lectura y una capa de conectividad más rápida.',
+      desarrolladores: '',
+      objetivo: 'Mejorar la pertinencia de las recomendaciones y el rendimiento de la consulta del catálogo.',
+      comunidades: '',
+      resultados: '',
+      seguimientos: '',
+      versiones: 'V2 · en fase de pruebas.',
+      proceso: ''
+    }
+  },
+  {
+    pilar: 'pilar3', grupo: 'investigacion', estilo: 'teal-card',
+    nombre: 'CINAR · Investigación',
+    scope: 'Ciclo de investigación',
+    estado: 'desarrollo',
+    icono: '🔬',
+    img: '',
+    desc: 'Estrategia integral de acompañamiento al ciclo de investigación, desde la búsqueda y evaluación de información hasta la gestión de referencias, ciencia abierta, visibilidad de resultados, publicación y medición del impacto académico.',
+    url: '',
+    cta: 'Próximamente',
+    ficha: {
+      definicion: 'Estrategia integral de acompañamiento al ciclo de investigación.',
+      descripcionTecnica: 'Cubre búsqueda y evaluación de información, gestión de referencias, ciencia abierta, visibilidad de resultados, publicación y medición del impacto académico.',
+      desarrolladores: '',
+      objetivo: 'Acompañar al investigador de extremo a extremo en todo el ciclo de investigación.',
+      comunidades: 'Investigadores, semilleros y grupos de investigación.',
+      resultados: '',
+      seguimientos: '',
+      versiones: '',
+      proceso: ''
+    }
+  }
+];
+
+/* Flujos NexusScript en operación (diagramas del Pilar 2) */
+const FLUJOS = [
+  {
+    titulo: '01. Gestión Inteligente de Turnos y Agendamiento',
+    desc: 'Captura solicitudes presenciales, calcula el número de atención en cola y envía notificaciones por correo en tiempo real.',
+    pasos: [
+      ['📝 Usuario llena Formulario', 'Google Forms'],
+      ['⚙️ Apps Script procesa', 'Calcula turno &amp; cola'],
+      ['📩 Notificación por Email', 'Gmail API en tiempo real'],
+      ['📊 Registro Centralizado', 'Google Sheets / Looker']
+    ]
+  },
+  {
+    titulo: '02. Evaluación y Calificación de Proveedores',
+    desc: 'Sistematiza las evaluaciones periódicas de proveedores de bases de datos y recursos digitales con cálculo automático de scores.',
+    pasos: [
+      ['📋 Evaluación por Analista', 'Criterios cuantitativos'],
+      ['🧮 Motor de Cálculo (GAS)', 'Ponderación e índices'],
+      ['📑 Generación de Reporte', 'Consolidado ejecutivo'],
+      ['📈 Tablero de Decisiones', 'Decisión de renovación']
+    ]
+  },
+  {
+    titulo: '03. Generación Automática de Paz y Salvo',
+    desc: 'Verifica el estado del usuario en el SGB y emite el documento oficial de Paz y Salvo en PDF enviado directamente al correo institucional.',
+    pasos: [
+      ['🎓 Solicitud de Grado', 'Formulario de Paz y Salvo'],
+      ['🔍 Verificación SGB', 'Estado de cuenta / préstamos'],
+      ['📄 Generación de PDF', 'Documento con sello digital'],
+      ['✉️ Envío al Correo', 'Gmail automatizado']
+    ]
+  }
+];
+
+/* ═══════════════════════════════════════════════════════════════════
+   RENDERIZADO
+   ═══════════════════════════════════════════════════════════════════ */
+
+const CAMPOS_FICHA = [
+  ['definicion',         'Definición',              true],
+  ['descripcionTecnica', 'Descripción técnica',     true],
+  ['objetivo',           'Objetivo',                true],
+  ['comunidades',        'Comunidades que beneficia', false],
+  ['desarrolladores',    'Desarrolladores',         false],
+  ['resultados',         'Resultados',              false],
+  ['seguimientos',       'Seguimientos',            false],
+  ['versiones',          'Versiones',               false],
+  ['proceso',            'Proceso',                 false]
+];
+
+const ETIQUETA_ESTADO = { desarrollo: 'En desarrollo', pendiente: 'Por documentar', activo: 'En operación' };
+
+function esc(t) {
+  return String(t == null ? '' : t)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function tarjetaHTML(item, indice) {
+  const clases = ['tool-card', item.estilo, item.estado === 'desarrollo' ? 'is-desarrollo' : '', item.estado === 'pendiente' ? 'is-pendiente' : ''].filter(Boolean).join(' ');
+
+  const banner = item.img
+    ? '<div class="tool-banner-wrap"><img src="' + esc(item.img) + '" alt="' + esc(item.nombre) + '" class="tool-banner-img" loading="lazy"></div>'
+    : '<div class="tool-banner-wrap"><div class="tool-banner-ph">' + (item.icono || '📌') + '</div></div>';
+
+  const chip = item.estado === 'activo' ? ''
+    : '<span class="estado-chip ' + item.estado + '">' + ETIQUETA_ESTADO[item.estado] + '</span>';
+
+  const boton = item.url
+    ? '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="btn-main">' + esc(item.cta) + '</a>'
+    : '<span class="btn-main disabled">' + esc(item.cta || 'Próximamente') + '</span>';
+
+  const qr = item.url
+    ? '<div class="qr-static-box"><div class="qr-holder" data-url="' + esc(item.url) + '"></div><span class="qr-label">Escanear QR</span></div>'
+    : '';
+
+  return '' +
+    '<div class="' + clases + '">' +
+      chip + banner +
+      '<div class="tool-card-body">' +
+        '<div class="tool-content-layout">' +
+          '<div class="tool-info">' +
+            '<div class="tool-name">' + esc(item.nombre) + '</div>' +
+            '<span class="tool-scope">' + esc(item.scope) + '</span>' +
+            '<p class="tool-desc">' + esc(item.desc) + '</p>' +
+            boton +
+            '<button class="btn-ficha" data-ficha="' + indice + '">📄 Ver ficha de la iniciativa</button>' +
+          '</div>' +
+          qr +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+function flujoHTML(f) {
+  const pasos = f.pasos.map(function (p) {
+    return '<div class="flow-box">' + p[0] + '<small>' + p[1] + '</small></div>';
+  }).join('<div class="flow-arrow">➔</div>');
+
+  return '<div class="flow-card"><h4>' + esc(f.titulo) + '</h4><p>' + esc(f.desc) + '</p>' +
+         '<div class="flow-row">' + pasos + '</div></div>';
+}
+
+function construirTablero() {
+  // Tarjetas resumen de los 3 pilares
+  document.getElementById('pilaresGrid').innerHTML = PILARES.map(function (p) {
+    const n = INICIATIVAS.filter(function (i) { return i.pilar === p.id; }).length;
+    return '<a href="#' + p.id + '" class="pilar">' +
+             '<span class="bn-pilar-tag">' + p.num + '</span>' +
+             '<div class="pilar-icon">' + p.icono + '</div>' +
+             '<h3>' + esc(p.nombre) + '</h3>' +
+             '<p>' + esc(p.resumen) + '</p>' +
+             '<span class="pilar-count">' + n + ' iniciativas</span>' +
+           '</a>';
+  }).join('');
+
+  // Bloques de contenido por pilar
+  document.getElementById('pilaresContenido').innerHTML = PILARES.map(function (p) {
+    const grupos = p.grupos.map(function (g) {
+      const items = INICIATIVAS.filter(function (i) { return i.pilar === p.id && i.grupo === g.id; });
+      if (!items.length) return '';
+
+      const cards = items.map(function (i) { return tarjetaHTML(i, INICIATIVAS.indexOf(i)); }).join('');
+      const extra = g.id === 'automatizaciones' ? FLUJOS.map(flujoHTML).join('') : '';
+
+      return '<div class="bn-grupo">' +
+               '<h4 class="bn-grupo-title">' + esc(g.titulo) + '<span class="g-count">' + items.length + '</span></h4>' +
+               '<p class="bn-grupo-desc">' + esc(g.desc) + '</p>' +
+               '<div class="tools-grid">' + cards + '</div>' +
+               extra +
+             '</div>';
+    }).join('');
+
+    return '<div class="bn-pilar-block ' + p.clase + '" id="' + p.id + '">' +
+             '<div class="bn-pilar-head">' +
+               '<div class="bn-pilar-num">' + p.num + '</div>' +
+               '<div><h3>' + esc(p.nombre) + '</h3><p>' + esc(p.resumen) + '</p></div>' +
+             '</div>' + grupos +
+           '</div>';
+  }).join('');
+
+  // Métricas del encabezado, calculadas sobre los datos reales
+  const total = INICIATIVAS.length;
+  const enDesarrollo = INICIATIVAS.filter(function (i) { return i.estado === 'desarrollo'; }).length;
+  document.getElementById('bnSummary').innerHTML =
+    '<div class="bn-summary-item c1"><b>' + PILARES.length + '</b> pilares estratégicos</div>' +
+    '<div class="bn-summary-item c2"><b>' + total + '</b> iniciativas en el ecosistema</div>' +
+    '<div class="bn-summary-item c3"><b>' + enDesarrollo + '</b> proyectos en desarrollo</div>' +
+    '<div class="bn-summary-item c1"><b>+2.204</b> usuarios inscritos en experiencias de aprendizaje</div>';
+}
+
+/* ── FICHA ── */
+const overlay = document.getElementById('fichaOverlay');
+
+function abrirFicha(indice) {
+  const item = INICIATIVAS[indice];
+  if (!item) return;
+  const pilar = PILARES.find(function (p) { return p.id === item.pilar; });
+  const grupo = pilar.grupos.find(function (g) { return g.id === item.grupo; });
+
+  document.getElementById('fichaEyebrow').textContent = 'Pilar ' + pilar.num + ' · ' + pilar.nombre + ' — ' + grupo.titulo;
+  document.getElementById('fichaTitulo').textContent = item.nombre;
+
+  document.getElementById('fichaChips').innerHTML =
+    '<span class="tool-scope">' + esc(item.scope) + '</span>' +
+    (item.estado === 'activo'
+      ? '<span class="estado-chip" style="position:static; background:rgba(15,169,136,0.13); color:#0c8a6f; border:1px solid rgba(15,169,136,0.32);">En operación</span>'
+      : '<span class="estado-chip ' + item.estado + '" style="position:static;">' + ETIQUETA_ESTADO[item.estado] + '</span>');
+
+  document.getElementById('fichaGrid').innerHTML = CAMPOS_FICHA.map(function (c) {
+    const valor = (item.ficha && item.ficha[c[0]]) ? item.ficha[c[0]] : '';
+    const dd = valor
+      ? '<dd>' + esc(valor) + '</dd>'
+      : '<dd class="vacio">Por documentar</dd>';
+    return '<div class="ficha-field' + (c[2] ? ' full' : '') + '"><dt>' + c[1] + '</dt>' + dd + '</div>';
+  }).join('');
+
+  document.getElementById('fichaActions').innerHTML = item.url
+    ? '<a href="' + esc(item.url) + '" target="_blank" rel="noopener" class="btn-main">' + esc(item.cta) + '</a>'
+    : '<span class="btn-main disabled">Sin enlace de acceso todavía</span>';
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarFicha() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── ARRANQUE ── */
+document.addEventListener('DOMContentLoaded', function () {
+  construirTablero();
+
+  // QR de cada tarjeta con enlace real
+  document.querySelectorAll('.qr-holder').forEach(function (c) {
+    const url = c.getAttribute('data-url');
+    if (url && typeof QRCode !== 'undefined') {
+      new QRCode(c, { text: url, width: 85, height: 85, colorDark: '#14324a', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+    }
   });
+
+  document.addEventListener('click', function (e) {
+    const b = e.target.closest('[data-ficha]');
+    if (b) { abrirFicha(Number(b.getAttribute('data-ficha'))); return; }
+    if (e.target === overlay || e.target.closest('#fichaClose')) cerrarFicha();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') cerrarFicha();
+  });
+
+  window.addEventListener('scroll', function () {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('progressBar').style.width = (winScroll / height) * 100 + '%';
+  });
+});
 </script>
 
 </body>
