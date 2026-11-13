@@ -24,7 +24,7 @@ El ecosistema articula **12 proyectos de innovación** distribuidos en **5 pilar
 
 Puedes acceder al tablero interactivo y explorar todos los asistentes y servicios desde el siguiente enlace:
 
-👉 **[Ver Tablero Interactivo BiblioNova en GitHub Pages](https://rekol08.github.io/BIBLIONOVA/)**
+👉 **[Ver Tablero Interactivo BiblioNova en GitHub Pages](https://bibliotecas-areandina.github.io/BIBLIONOVA/)**
 
 ---
 
@@ -64,3 +64,19 @@ Este tablero sirve como complemento digital e interactivo del póster expuesto d
 Este proyecto y sus contenidos se desarrollan bajo la filosofía de **Ciencia Abierta** y apropiación tecnológica para el fortalecimiento de la comunidad académica e investigativa.
 
 © 2026 **Fundación Universitaria del Área Andina**. Todos los derechos reservados.
+
+
+## Centralización institucional — 13 de noviembre de 2026
+
+Repositorio transferido a [BIBLIOTECAS-AREANDINA](https://github.com/BIBLIOTECAS-AREANDINA), conservando su nombre y visibilidad pública. Las referencias Git anteriores se verificaron antes de actualizar esta documentación.
+
+Tablero de 12 proyectos y vínculo documental con CIBIC 2026; no identifica una VM CIBIC.
+
+Dirección institucional de Pages: https://bibliotecas-areandina.github.io/BIBLIONOVA/ . La disponibilidad HTTP se registra en la bitácora de centralización; no equivale a una prueba funcional completa. Los enlaces antiguos de Pages y QR impresos requieren actualización.
+
+[Inventario y pendientes](https://github.com/BIBLIOTECAS-AREANDINA/BIBLIONOVA/blob/main/docs/CENTRALIZACION_2026-11-13.md). No se modificaron despliegues de Apps Script, n8n ni Koha de producción.
+
+
+## Organización y seguimiento
+
+[Perfil institucional y guía de colaboración](https://github.com/BIBLIOTECAS-AREANDINA/.github/blob/main/profile/README.md). El plan Innovación, depósito BIBLIONOVA, conserva las tareas y responsables verificados; el inventario y las evidencias de esta gestión están en [la bitácora](docs/CENTRALIZACION_2026-11-13.md).
