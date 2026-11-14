@@ -88,3 +88,8 @@ La tarea de transferencia quedó En curso. No se marcó como completada ninguna 
 - Revisar otros privados de colecciones y respaldos institucionales sin trasladar datos en bloque. No se trasladaron respaldos personales ni generales, discos o bases.
 - puesto-prestamo-voz se excluyó: su README vigente del 13-nov lo redefine como asistente personal. reformateador-normas, dashboard-gen y estadincho-gen-v5 permanecen en la cuenta personal hasta confirmar pertenencia al ecosistema. No se trasladó toda la cuenta.
 - Revisión y aceptación de la documentación por las cuatro partes interesadas.
+
+
+## Seguimiento de pruebas funcionales
+
+Se ejecutaron 27 casos sobre las versiones fuente identificadas de índice H, BibliometriX y las dos variantes de Digitk: 20 PASS y 7 FAIL. Ver [informe, defectos, resultados esperados/obtenidos y ejecutor](pruebas/2026-11-13/README.md). Los servicios de Google fueron simulados en memoria; no se actuó sobre producción. Las pruebas de interfaz/exportación y la integración aislada de Digitk siguen pendientes. Este avance no completa la validación funcional.

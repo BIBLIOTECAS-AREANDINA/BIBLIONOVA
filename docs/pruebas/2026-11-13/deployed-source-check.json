@@ -1,0 +1,35 @@
+[
+  {
+    "repo": "Generador-ndice-H",
+    "file": "js/core/utils.js",
+    "url": "https://bibliotecas-areandina.github.io/Generador-ndice-H/js/core/utils.js",
+    "http": 200,
+    "deployed_sha256": "fcf89b4edba3a06d96349b458f159abaa94447e0ed55a0b09e7c879195d7eca8",
+    "tested_sha256": "48ac07c91b01d3825e7f5dd1e4fecf20e3a96710d2ed6a1dc444e08b395816cd",
+    "identical_bytes": false,
+    "identical_after_normalizing_line_endings": true,
+    "comparison": "UTF-8 y saltos CRLF/LF normalizados; no se altera c\u00f3digo"
+  },
+  {
+    "repo": "Generador-ndice-H",
+    "file": "js/core/analyze.js",
+    "url": "https://bibliotecas-areandina.github.io/Generador-ndice-H/js/core/analyze.js",
+    "http": 200,
+    "deployed_sha256": "dfd48a7bea1a35fc062725f1d2eabb7b84b1e1fed0815694d1b4a176140fdf24",
+    "tested_sha256": "dab4fc12e78961fd79e54936fc5a64e7a3288d472470e3a74ca7181930b15302",
+    "identical_bytes": false,
+    "identical_after_normalizing_line_endings": true,
+    "comparison": "UTF-8 y saltos CRLF/LF normalizados; no se altera c\u00f3digo"
+  },
+  {
+    "repo": "BibliometriX",
+    "file": "index.html",
+    "url": "https://bibliotecas-areandina.github.io/BibliometriX/index.html",
+    "http": 200,
+    "deployed_sha256": "353bf0ce8ca6dffb12fc0e9c394733c0238326320be9e3a51a535889e4718875",
+    "tested_sha256": "2d548cdcfc649e5156e3658118ee78457ef8e000864fe2976809aa77d09963e4",
+    "identical_bytes": false,
+    "identical_after_normalizing_line_endings": true,
+    "comparison": "UTF-8 y saltos CRLF/LF normalizados; no se altera c\u00f3digo"
+  }
+]

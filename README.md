@@ -80,3 +80,8 @@ Dirección institucional de Pages: https://bibliotecas-areandina.github.io/BIBLI
 ## Organización y seguimiento
 
 [Perfil institucional y guía de colaboración](https://github.com/BIBLIOTECAS-AREANDINA/.github/blob/main/profile/README.md). El plan Innovación, depósito BIBLIONOVA, conserva las tareas y responsables verificados; el inventario y las evidencias de esta gestión están en [la bitácora](docs/CENTRALIZACION_2026-11-13.md).
+
+
+## Pruebas funcionales — 13 de noviembre de 2026
+
+[Resultados y paquete reproducible](docs/pruebas/2026-11-13/README.md): 27 casos de código con datos ficticios, 20 PASS y 7 FAIL. La integración real de Digitk y la prueba completa de navegador/exportación permanecen pendientes; no se corrigió código de aplicación ni se dio por aprobado el cierre.

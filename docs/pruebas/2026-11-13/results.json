@@ -1,0 +1,433 @@
+{
+  "date": "2026-11-13",
+  "timezone": "America/Bogota",
+  "environment": {
+    "node": "v24.13.1",
+    "network": "Sin red en las VM de prueba; todos los servicios de Google son mocks en memoria",
+    "sourceChanges": false
+  },
+  "sources": [
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/core/utils.js",
+      "sha256": "48ac07c91b01d3825e7f5dd1e4fecf20e3a96710d2ed6a1dc444e08b395816cd"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/core/registry.js",
+      "sha256": "06353340fd5c1c4d97de2cc135359a27b2a0c8810e603344771496028ac8b784"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/sources/generic.js",
+      "sha256": "cf96e0614253e3bf6cd55354ed40319c12961de2979739a1ccb3e7bca398a507"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/sources/gruplac.js",
+      "sha256": "0b840fe68095ec80c5d2aade06431dfaa8e917c267d76976f97e9902acd52763"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/sources/scopus.js",
+      "sha256": "a52d762ffe0d01a73b5dcfe4dc9613acb8a2ad21a400799147f7b576d80bcbb7"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/sources/dimensions.js",
+      "sha256": "8118504765fc32c3443ae1ff7c7ed6c89bb90255490de663991334224b57f692"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/sources/scholar.js",
+      "sha256": "bd8bebfa46f93a1b11ea5a18d845430bd557bcb7a9c8d7b42ec7a9bdfe324c21"
+    },
+    {
+      "repo": "Generador-ndice-H",
+      "file": "js/core/analyze.js",
+      "sha256": "dab4fc12e78961fd79e54936fc5a64e7a3288d472470e3a74ca7181930b15302"
+    },
+    {
+      "repo": "BibliometriX",
+      "file": "index.html",
+      "sha256": "2d548cdcfc649e5156e3658118ee78457ef8e000864fe2976809aa77d09963e4"
+    },
+    {
+      "repo": "digitk-cargue-repositorio",
+      "file": "codigo.gs",
+      "sha256": "8745ac0561444bb4c44133b8f7704ed0ca9b65090a6f2cf66b1e26bd230fd52b"
+    },
+    {
+      "repo": "digitk-cargue-repositorio",
+      "file": "procesador.gs",
+      "sha256": "9a66d38bdfa7b84500f89203189aa61f5c9006cbefe70c8255d3f23a947adf0d"
+    },
+    {
+      "repo": "Digitek_sistema_repositorio",
+      "file": "DigitK_Sistema_Repositorio_v2.gs",
+      "sha256": "70ec456d2502013b55ca66da5f77cfe11a05cde486d6718fc725b255dc24eb3f"
+    }
+  ],
+  "results": [
+    {
+      "id": "H01",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Seis filas, un título duplicado; máximo entre fuentes, Altmetric excluido",
+      "expected": {
+        "h": 3,
+        "g": 4,
+        "i10": 0,
+        "total": 24,
+        "max": 9,
+        "n": 5
+      },
+      "actual": {
+        "h": 3,
+        "g": 4,
+        "i10": 0,
+        "total": 24,
+        "max": 9,
+        "n": 5
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "H02",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Cero citas y lista vacía producen h=0/g=0",
+      "expected": [
+        0,
+        0,
+        0
+      ],
+      "actual": [
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "H03",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Título duplicado conserva mayor valor y no suma citas",
+      "expected": 9,
+      "actual": 9,
+      "status": "PASS"
+    },
+    {
+      "id": "H04",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Excluir prensa/opinión aunque tenga muchas citas",
+      "expected": 1,
+      "actual": 1,
+      "status": "PASS"
+    },
+    {
+      "id": "H05",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Archivo sin citas conserva obra y calcula cero",
+      "expected": [
+        1,
+        0
+      ],
+      "actual": [
+        1,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "H06",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Encabezado después de título introductorio detectado",
+      "expected": 5,
+      "actual": 5,
+      "status": "PASS"
+    },
+    {
+      "id": "H07",
+      "product": "Índice H",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Citas negativas textuales no deben convertirse a positivas",
+      "expected": 0,
+      "actual": 5,
+      "status": "FAIL"
+    },
+    {
+      "id": "B01",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Scopus CSV con BOM, seis filas y DOI duplicado",
+      "expected": {
+        "n": 5,
+        "total": 24,
+        "h": 3,
+        "g": 4
+      },
+      "actual": {
+        "n": 5,
+        "total": 24,
+        "h": 3,
+        "g": 4
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "B02",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Deduplicar DOI insensible a mayúsculas y conservar mayor cita",
+      "expected": 9,
+      "actual": 9,
+      "status": "PASS"
+    },
+    {
+      "id": "B03",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "WoS TSV con encabezados documentados",
+      "expected": [
+        {
+          "title": "Estudio QA WoS",
+          "year": 2024,
+          "cited": 7
+        }
+      ],
+      "actual": [
+        {
+          "title": "Estudio QA WoS",
+          "year": 2024,
+          "cited": 7
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "B04",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "CSV con título entrecomillado, salto de línea y comillas escapadas",
+      "expected": "Línea 1, \"QA\"\nLínea 2",
+      "actual": "Línea 1, \"QA\"\nLínea 2",
+      "status": "PASS"
+    },
+    {
+      "id": "B05",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Rechazar texto sin campos bibliográficos",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "B06",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Filtro temporal 2023–2025 deja tres registros y nueve citas",
+      "expected": {
+        "n": 3,
+        "total": 9,
+        "h": 2
+      },
+      "actual": {
+        "n": 3,
+        "total": 9,
+        "h": 2
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "B07",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Open Access=No debe clasificarse como cerrado",
+      "expected": false,
+      "actual": true,
+      "status": "FAIL"
+    },
+    {
+      "id": "B08",
+      "product": "BibliometriX",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Citas negativas deben rechazarse o normalizarse a cero",
+      "expected": 0,
+      "actual": -7,
+      "status": "FAIL"
+    },
+    {
+      "id": "D01",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Configuración pública sin reemplazar bloquea uso",
+      "expected": false,
+      "actual": false,
+      "status": "PASS"
+    },
+    {
+      "id": "D02",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Solicitud válida crea tres archivos, fila de 18 campos y dos notificaciones simuladas",
+      "expected": {
+        "ok": true,
+        "files": 3,
+        "rows": 1,
+        "columns": 18,
+        "mails": 2
+      },
+      "actual": {
+        "ok": true,
+        "files": 3,
+        "rows": 1,
+        "columns": 18,
+        "mails": 2
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "D03",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Dominio ajeno rechazado antes de crear datos",
+      "expected": {
+        "ok": false,
+        "folders": 0,
+        "rows": 0
+      },
+      "actual": {
+        "ok": false,
+        "folders": 0,
+        "rows": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "D04",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Título obligatorio vacío no crea datos",
+      "expected": {
+        "ok": false,
+        "folders": 0,
+        "rows": 0
+      },
+      "actual": {
+        "ok": false,
+        "folders": 0,
+        "rows": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "D05",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Adjunto obligatorio ausente rechaza solicitud",
+      "expected": false,
+      "actual": false,
+      "status": "PASS"
+    },
+    {
+      "id": "D06",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Objetos de adjunto vacíos no deben aceptar solicitud ni crear fila",
+      "expected": {
+        "ok": false,
+        "rows": 0
+      },
+      "actual": {
+        "ok": true,
+        "rows": 1
+      },
+      "status": "FAIL"
+    },
+    {
+      "id": "D07",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Fallo de almacenamiento no debe devolver éxito ni registrar solicitud completa",
+      "expected": {
+        "ok": false,
+        "rows": 0
+      },
+      "actual": {
+        "ok": true,
+        "rows": 1
+      },
+      "status": "FAIL"
+    },
+    {
+      "id": "D08",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Aprobar solicitud actualiza columna de estado y notifica en mock",
+      "expected": "Aprobado - pendiente Digitk",
+      "actual": "Aprobado - pendiente Digitk",
+      "status": "PASS"
+    },
+    {
+      "id": "D09",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Acción desconocida o ID inexistente no debe escribir en la hoja",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "D10",
+      "product": "Digitk plantilla",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Una solicitud ya cargada no debe retroceder a aprobada por enlace antiguo",
+      "expected": "Cargado en Digitk",
+      "actual": "Aprobado - pendiente Digitk",
+      "status": "FAIL"
+    },
+    {
+      "id": "V01",
+      "product": "Digitk v2",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Evento completo crea fila de 26 columnas y dos notificaciones simuladas",
+      "expected": {
+        "rows": 1,
+        "columns": 26,
+        "mails": 2
+      },
+      "actual": {
+        "rows": 1,
+        "columns": 26,
+        "mails": 2
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "V02",
+      "product": "Digitk v2",
+      "layer": "Código original en Node VM; servicios externos simulados",
+      "description": "Evento con solo correo y sin metadatos obligatorios no debe crear fila",
+      "expected": 0,
+      "actual": 1,
+      "status": "FAIL"
+    }
+  ],
+  "summary": {
+    "total": 27,
+    "pass": 20,
+    "fail": 7
+  },
+  "limits": [
+    "No verifica integración real de Google Apps Script, Drive, Sheets, Gmail ni permisos institucionales.",
+    "Las pruebas de navegador y exportación se registran por separado.",
+    "La aceptación de cargas usa bytes ficticios con cabecera PDF; no se validó renderizado PDF.",
+    "No se corrigió código de aplicación ni se ejecutaron operaciones productivas."
+  ]
+}
