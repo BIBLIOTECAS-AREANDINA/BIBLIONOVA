@@ -70,4 +70,9 @@ El ejecutor carga las funciones originales mediante Node VM y escribe `results.j
 
 ## Cierre y responsabilidades
 
-La validación funcional debe permanecer **En curso**. Andrea conserva la validación funcional; Cristian participa en la revisión técnica y corrección de defectos; Manuela conserva evidencias y Miguel da seguimiento al cierre. No se inventaron fechas comprometidas. Antes de cerrar: corregir/reprobar los siete defectos, completar navegador/exportación y realizar integración Digitk solo en entorno aislado acordado. No tocar Koha de producción.
+Al registrar esta ronda, la validación funcional debe pasar a **En curso**, sin marcarla completada. Andrea conserva la validación funcional; Cristian participa en la revisión técnica y corrección de defectos; Manuela conserva evidencias y Miguel da seguimiento al cierre. No se inventaron fechas comprometidas. Antes de cerrar: corregir/reprobar los siete defectos, completar navegador/exportación y realizar integración Digitk solo en entorno aislado acordado. No tocar Koha de producción.
+
+
+## Estado del registro en Planner
+
+Las evidencias de esta ronda están publicadas en GitHub. **Todavía no se guardaron estos resultados nuevos en Planner**: otra sesión de control estaba cambiando las ventanas. Se solicitó pausar esa sesión antes de continuar. La tarea existente de validación es `gxbCMrY7NkGNQ37tcFhlg2QAIRby`; la de seguimiento técnico es `GF_l2jjPcEi2VzOUMKdQ2mQAMKi9`. No se crearon tareas duplicadas ni se declara completado el registro.
