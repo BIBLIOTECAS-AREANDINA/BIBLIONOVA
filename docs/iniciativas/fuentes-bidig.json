@@ -1,0 +1,164 @@
+{
+  "_nota": "Dónde aparece cada iniciativa del tablero dentro de la biblioteca digital (bidig). 'tarjeta' es el índice de la tarjeta en https://bidig.areandina.edu.co/main-home/biblionova/ ; 'paginas' son rutas de bidig que la mencionan; 'externo' son destinos fuera de bidig (no se capturan: piden sesión). Revisado el 13/11/2026.",
+  "bidigBase": "https://bidig.areandina.edu.co",
+  "paginaBiblionova": "/main-home/biblionova/",
+  "iniciativas": {
+    "BiblioClick": {
+      "tarjeta": 1,
+      "paginas": [
+        "/main-home/inicio-todas-las-facultades-micro-facultades/"
+      ]
+    },
+    "Gestión BIDIG": {
+      "paginas": [
+        "/"
+      ]
+    },
+    "Astra_Biblio": {
+      "tarjeta": 0,
+      "paginas": [
+        "/main-home/asistentes-de-ia/"
+      ]
+    },
+    "MentorMind": {
+      "tarjeta": 0,
+      "paginas": [
+        "/main-home/asistentes-de-ia/"
+      ]
+    },
+    "LexBot Constitucional": {
+      "tarjeta": 0,
+      "paginas": [
+        "/main-home/asistentes-de-ia/"
+      ]
+    },
+    "Asesor de Ciencia Abierta": {
+      "tarjeta": 0,
+      "paginas": [
+        "/main-home/asistentes-de-ia/"
+      ]
+    },
+    "ATLAS": {
+      "tarjeta": 0,
+      "paginas": [
+        "/main-home/asistentes-de-ia/"
+      ]
+    },
+    "Autopréstamo": {
+      "paginas": []
+    },
+    "Autoarchivo DigitK": {
+      "paginas": [
+        "/main-home/servicios/servicios-basicos/"
+      ],
+      "externo": [
+        "https://digitk.areandina.edu.co/"
+      ],
+      "mencion": true
+    },
+    "ApropIA": {
+      "tarjeta": 2,
+      "paginas": [
+        "/main-home/alfabetizacion-informacional/2851-2/"
+      ]
+    },
+    "Librín": {
+      "tarjeta": 5,
+      "paginas": [
+        "/main-home/extension-cultural-rework/"
+      ]
+    },
+    "Google Scholar": {
+      "paginas": [
+        "/main-home/cinar-rework-copy-nueva-version/"
+      ],
+      "mencion": true
+    },
+    "Normas APA 7": {
+      "paginas": [
+        "/main-home/alfabetizacion-informacional/2851-2/"
+      ],
+      "mencion": true
+    },
+    "Estilo Vancouver": {
+      "paginas": [
+        "/main-home/alfabetizacion-informacional/2851-2/"
+      ],
+      "mencion": true
+    },
+    "Tablero SROI & Analytics": {
+      "tarjeta": 4,
+      "paginas": []
+    },
+    "Tablero Estadístico": {
+      "paginas": []
+    },
+    "Tablero Adquisiciones": {
+      "paginas": []
+    },
+    "Tablero Procesos Técnicos": {
+      "paginas": []
+    },
+    "Integración Koha": {
+      "tarjeta": 5,
+      "paginas": [],
+      "mencion": true
+    },
+    "Asistente de Catalogación IA": {
+      "paginas": []
+    },
+    "NexusScript Core": {
+      "tarjeta": 7,
+      "paginas": []
+    },
+    "Solicitudes · Reserva de Espacios": {
+      "tarjeta": 6,
+      "paginas": [
+        "/main-home/servicios/agenda-espacios/",
+        "/main-home/servicios/salas-y-espacios/"
+      ]
+    },
+    "Solicitudes · Marketing": {
+      "paginas": []
+    },
+    "Solicitudes · Acreditación": {
+      "paginas": [
+        "/main-home/propuesta-servicios/"
+      ]
+    },
+    "Solicitudes · DigitK": {
+      "paginas": [
+        "/main-home/servicios/servicios-basicos/"
+      ],
+      "mencion": true
+    },
+    "Solicitudes · Formación de Usuarios": {
+      "paginas": [
+        "/main-home/alfabetizacion-informacional/2851-2/"
+      ],
+      "mencion": true
+    },
+    "Colecciones con Sentido": {
+      "tarjeta": 3,
+      "paginas": []
+    },
+    "Selecciones con Sentido": {
+      "paginas": []
+    },
+    "Sistema Integrado de Colecciones (V2)": {
+      "paginas": [],
+      "relacion": "Colecciones con Sentido"
+    },
+    "CINAR · Investigación": {
+      "paginas": [
+        "/main-home/cinar-rework-copy-nueva-version/"
+      ]
+    }
+  },
+  "conciliar": [
+    "Proyectos: bidig habla de **siete proyectos** y **cinco pilares**; el tablero muestra **30 iniciativas**, **11 en desarrollo** y **tres pilares**.",
+    "Usuarios: bidig informa **565 usuarios formados en IA** (ApropIA); el tablero muestra **+2.204 usuarios inscritos** en experiencias de aprendizaje. Son medidas distintas y conviene rotularlas igual en ambos sitios.",
+    "Librín: el tablero lo marca por definir; bidig lo muestra **en desarrollo**, con arquitectura en Node.js y n8n y a la espera de la integración OAuth2 con Koha.",
+    "Bidig muestra 5 agentes de IA (Intellectus), 40+ bases de datos, 27.495 títulos catalogados y 95 recursos en el tablero SROI; estas cifras no están en el tablero."
+  ]
+}

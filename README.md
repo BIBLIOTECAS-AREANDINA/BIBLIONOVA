@@ -26,6 +26,10 @@ Puedes acceder al tablero interactivo y explorar todos los asistentes y servicio
 
 👉 **[Ver Tablero Interactivo BiblioNova en GitHub Pages](https://bibliotecas-areandina.github.io/BIBLIONOVA/)**
 
+## 🗂️ Iniciativas documentadas en la biblioteca digital
+
+Las 30 iniciativas del tablero se buscaron en [bidig](https://bidig.areandina.edu.co/main-home/biblionova/) y se documentaron una por una, con pantallazos de dónde aparece cada una y las cifras que aún no coinciden entre ambos sitios: **[ver índice de iniciativas](docs/iniciativas/README.md)**.
+
 ---
 
 ## 🏛️ Participación en CIBIC 2026
