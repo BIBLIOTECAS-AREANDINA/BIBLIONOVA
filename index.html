@@ -1418,6 +1418,28 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('progressBar').style.width = (winScroll / height) * 100 + '%';
   });
 });
+/* ── EQUIPO: se lee de datos/centro.json del repo .github (fuente única).
+      Si no carga, se conserva el equipo escrito en el HTML. ── */
+(function () {
+  const FUENTE = "https://raw.githubusercontent.com/BIBLIOTECAS-AREANDINA/.github/main/datos/centro.json";
+  const https = function (u) { return typeof u === "string" && u.indexOf("https://") === 0 ? u : ""; };
+  fetch(FUENTE, { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error("HTTP " + r.status)); })
+    .then(function (d) {
+      const grid = document.querySelector("#equipo .equipo-grid");
+      if (!grid || !Array.isArray(d.equipo) || !d.equipo.length) return;
+      const perfil = https(d.enlaces && d.enlaces.colaboradores);
+      grid.innerHTML = d.equipo.map(function (m) {
+        const url = https(m.perfil) || perfil;
+        const nombre = url
+          ? '<a href="' + esc(url) + '" target="_blank" rel="noopener" title="Ver a ' + esc(m.nombre) + ' en el equipo de la biblioteca digital">' + esc(m.nombre) + "</a>"
+          : esc(m.nombre);
+        const foto = https(m.foto) ? '<img src="' + esc(m.foto) + '" alt="' + esc(m.nombre) + '" class="member-img">' : "";
+        return '<div class="member-card"><div class="member-img-wrap">' + foto + "</div><h4>" + nombre + '</h4><p class="rol">' + esc(m.rol) + "</p></div>";
+      }).join("");
+    })
+    .catch(function () { /* se mantiene el HTML estático */ });
+})();
 </script>
 
 </body>
