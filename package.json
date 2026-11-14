@@ -1,0 +1,7 @@
+{
+  "name": "biblionova-docs",
+  "private": true,
+  "type": "module",
+  "scripts": { "documentar": "node scripts/documentar-iniciativas.mjs" },
+  "devDependencies": { "playwright": "1.49.1" }
+}
